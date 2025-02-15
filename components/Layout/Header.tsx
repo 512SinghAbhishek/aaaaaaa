@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AppBar,
   Toolbar,
@@ -15,6 +15,7 @@ import {
   ListItemIcon,
   IconButton, Card, CardContent, Avatar, Grid
 } from "@mui/material";
+import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@mui/lab";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
@@ -26,8 +27,59 @@ import "swiper/css/pagination";
 import MenuIcon from "@mui/icons-material/Menu";
 
 const drawerWidth = 240;
-const primaryColor = "#18A0C3";
+const primaryColor = "#0a5578";
 const secondaryColor = "#FFFFFF";
+
+const roadmapData = [
+  {
+    year: "2016",
+    title: "STARTING UP",
+    color: "#74AF27",
+    description: [
+      "Research on aviation market",
+      "Research on cryptocurrency",
+      "Research on traditional online payment system & alternative payment solution"
+    ]
+  },
+  {
+    year: "2017 Q2",
+    title: "OPENING NEW BUSINESS",
+    color: "#0288D1",
+    description: [
+      "Finish necessarily legal procedure to enable operations"
+    ]
+  },
+  {
+    year: "2017 Q1",
+    title: "BUILDING UP AND GETTING REAL EXPERIENCES",
+    color: "#880E4F",
+    description: [
+      "Integrate Bitair payment solution into real business network regarding booking airline ticket (trial version) to conduct research",
+      "Make survey of user's experiences & choices",
+      "Approach airlines, travel & tourism"
+    ]
+  },
+  {
+    year: "2017 Q2",
+    title: "OPENING NEW BUSINESS",
+    color: "#0288D1",
+    description: [
+      "Finish necessarily legal procedure to enable operations"
+    ]
+  },
+  {
+    year: "2017 Q1",
+    title: "BUILDING UP AND GETTING REAL EXPERIENCES",
+    color: "#880E4F",
+    description: [
+      "Integrate Bitair payment solution into real business network regarding booking airline ticket (trial version) to conduct research",
+      "Make survey of user's experiences & choices",
+      "Approach airlines, travel & tourism"
+    ]
+  },
+ 
+];
+
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
@@ -35,31 +87,37 @@ const Header = () => {
   const handleToggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
+  const items = [
+    { type: "image", src: "/images/interview.jpg" },
+    { type: "image", src: "/images/Job.webp" },
+    { type: "image", src: "/images/Job.webp" },
+    { type: "image", src: "/images/1723224215434.png" }
+  ];
 
   const testimonials = [
     {
       name: "Ahmed Khalid",
       role: "CEO of Horizon Technologies",
       quote:
-        "Working with Sapiens was an absolute game-changer for our business. Their tailor-made approach allowed us to complete our project on time, with a level of customization that exceeded our expectations.",
+        "Working with Career Cruise Consulting was an absolute game-changer for our business. Their tailor-made approach allowed us to complete our project on time, with a level of customization that exceeded our expectations.",
     },
     {
       name: "Fatima Al Mansoori",
       role: "Operations Director at Gulf Innovations",
       quote:
-        "Sapiens helped us execute a complex project with flawless precision. Their deep understanding of the Middle Eastern market, combined with their expertise in creating tailor-made solutions, made them the perfect partner for our expansion.",
+        "Career Cruise Consulting helped us execute a complex project with flawless precision. Their deep understanding of the Middle Eastern market, combined with their expertise in creating tailor-made solutions, made them the perfect partner for our expansion.",
     },
     {
       name: "Sultan Bin Zayed",
       role: "Founder of Zenith Construction",
       quote:
-        "The team at Sapiens went above and beyond to ensure our project aligned perfectly with our vision. Their Dubai-based expertise, paired with their attention to detail, gave us confidence from day one.",
+        "The team at Career Cruise Consulting went above and beyond to ensure our project aligned perfectly with our vision. Their Dubai-based expertise, paired with their attention to detail, gave us confidence from day one.",
     },
     {
       name: "Laila Abbas",
       role: "Managing Director at Al Noor Enterprises",
       quote:
-        "Sapiens provided exceptional service and innovative solutions tailored to our needs. Their understanding of the regional landscape in the Middle East was clear in every aspect of their work.",
+        "Career Cruise Consulting provided exceptional service and innovative solutions tailored to our needs. Their understanding of the regional landscape in the Middle East was clear in every aspect of their work.",
     },
   ];
   const menuItems = [
@@ -68,6 +126,39 @@ const Header = () => {
     { text: "Services", route: "/Services" },
     { text: "Contact", route: "/contact_us" },
   ];
+
+  const CounterCard = ({ title, target }) => {
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+      let start = 0;
+      const duration = 2000;
+      const incrementTime = 20;
+      const step = Math.ceil(target / (duration / incrementTime));
+
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          start = target;
+          clearInterval(timer);
+        }
+        setCount(start);
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }, [target]);
+
+    return (
+      <Card sx={{ backgroundColor: primaryColor, color: secondaryColor, textAlign: "center", padding: 2, minWidth: 200 }}>
+        <CardContent>
+          <Typography variant="h5" component="div">
+            {count}
+          </Typography>
+          <Typography variant="subtitle1">{title}</Typography>
+        </CardContent>
+      </Card>
+    );
+  };
 
   return (
 
@@ -118,38 +209,53 @@ const Header = () => {
               <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
                 <MenuIcon />
               </IconButton>
-
-              <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
+              <Box
+                component="img"
+                src="/images/logo.png"
+                alt="Career Cruise Consulting ME logo white"
+                sx={{
+                  width: "80px",
+                  height: "auto",
+                  marginTop: "10px",
+                  marginRight: "20px",
+                  borderRadius: "7px"
+                }}
+              />
+              {/* <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
                 Career Cruise Consulting
-              </Typography>
+              </Typography> */}
             </Toolbar>
           </AppBar>
 
           <Toolbar />
 
-          <Container maxWidth="md">
-            <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
-              Transform Your <span style={{ color: primaryColor }}>Events</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire a Hostess Agency in Dubai
-            </Typography>
-            <Typography variant="body1" paragraph>
-              Discover how our hostess agency in Dubai connects you with top talent, helping you hire hostesses for events and ensuring success in every project.
-            </Typography>
-            <Button
-              variant="outlined"
-              sx={{
-                mt: 2,
-                borderColor: primaryColor,
-                color: primaryColor,
-                '&:hover': {
-                  backgroundColor: primaryColor,
-                  color: secondaryColor,
-                }
-              }}
-            >
-              Get Started Today!
-            </Button>
-          </Container>
-          <Box component="main" sx={{ flexGrow: 1, p: 3, ml: `${drawerWidth}px` }}>
+          <Box className="Head" sx={{ backgroundImage: 'url("/images/1723224215434.png")', height: "500px" }}>
+            <Container maxWidth="md" sx={{ padding: "100px 0" }}>
+              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
+                Transform Your <span style={{ color: primaryColor }}>Events</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire a Hostess Agency in Dubai
+              </Typography>
+              <Typography variant="body1" paragraph>
+                Discover how our hostess agency in Dubai connects you with top talent, helping you hire hostesses for events and ensuring success in every project.
+              </Typography>
+              <Button
+                variant="outlined"
+                sx={{
+                  mt: 2,
+                  borderColor: primaryColor,
+                  color: primaryColor,
+                  '&:hover': {
+                    backgroundColor: primaryColor,
+                    color: secondaryColor,
+                  }
+                }}
+              >
+                Get Started Today!
+              </Button>
+            </Container>
+          </Box>
+
+
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
               Event Staffing Services in Dubai
@@ -200,115 +306,199 @@ const Header = () => {
 
               {/* Image Section */}
               <Grid item xs={12} md={6} textAlign="center">
-                <img
-                  src="https://sapiens-me.com/wp-content/uploads/2024/10/hostess-agency.jpg"
-                  alt="Hostess Agency"
-                  style={{ width: "100%", borderRadius: "8px" }}
-                />
+                <Grid container spacing={2} justifyContent="center">
+                  {items.map((item, index) => (
+                    <Grid
+                      item
+                      key={index}
+                      xs={12} sm={6}
+                      sx={{
+                        height: 250,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        borderRadius: 2,
+                        overflow: "hidden",
+                        position: "relative",
+                      }}
+                    >
+                      <Box
+                        component="img"
+                        src={item.src}
+                        alt="Grid Item"
+                        sx={{
+                          width: "100%",
+                          height: "100%",
+                          objectFit: "cover",
+                          transition: "transform 0.3s ease-in-out",
+                          '&:hover': {
+                            transform: "scale(1.1)",
+                          },
+                        }}
+                      />
+                    </Grid>
+                  ))}
+                </Grid>
               </Grid>
             </Grid>
 
-            {/* Services Section */}
-            <Box sx={{ textAlign: "center", mt: 6 }}>
-              <img
-                src="https://sapiens-me.com/wp-content/uploads/2024/07/Screenshot_2024-07-29_134432-removebg-preview.png"
-                alt="Sapiens ME Logo"
-                style={{ width: "200px", marginBottom: "20px" }}
-              />
-              <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
-                Services.
-              </Typography>
-            </Box>
 
-            {/* Additional Image */}
-            <Box sx={{ textAlign: "center", mt: 4 }}>
-              <img
-                src="https://sapiens-me.com/wp-content/uploads/2024/10/event-staffing-agency-dubai.jpg"
-                alt="Event Staffing"
-                style={{ width: "300px", borderRadius: "8px" }}
-              />
-            </Box>
           </Box>
-          <Typography variant="h4" fontWeight="bold" color={secondaryColor}>
-            What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
-          </Typography>
 
-          <Swiper
-            modules={[Pagination, Autoplay]}
-            slidesPerView={2}
-            spaceBetween={30}
-            autoplay={{ delay: 3000 }}
-            pagination={{ clickable: true }}
-            style={{ padding: "20px", maxWidth: "80%", margin: "auto" }}
-          >
-            {testimonials.map((testimonial, index) => (
-              <SwiperSlide key={index}>
-                <Card sx={{ backgroundColor: secondaryColor, borderRadius: "10px", boxShadow: 3 }}>
-                  <CardContent>
-                    <Typography variant="h6" fontStyle="italic">
-                      “{testimonial.quote}”
+
+          <Box sx={{ margin: "50px 0" }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
+            </Typography>
+
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              slidesPerView={3}
+              spaceBetween={30}
+              autoplay={{ delay: 3000 }}
+              pagination={{ clickable: true }}
+              style={{ padding: "20px", maxWidth: "80%", margin: "auto" }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <SwiperSlide key={index}>
+                  <Card sx={{ backgroundColor: secondaryColor, borderRadius: "10px", height: "500px", boxShadow: 3 }}>
+                    <CardContent>
+                      <Typography variant="h6" fontStyle="italic">
+                        “{testimonial.quote}”
+                      </Typography>
+                      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
+                        <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {testimonial.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {testimonial.role}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </Box>
+
+          <Box sx={{ margin: "20px 0 50px 0" }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
+            </Typography>
+
+            <Grid container spacing={20} justifyContent="center" sx={{ padding: 3 }}>
+              <Grid item>
+                <CounterCard title="Total Clients" target={500} />
+              </Grid>
+              <Grid item>
+                <CounterCard title="Total Employees" target={5845} />
+              </Grid>
+              <Grid item>
+                <CounterCard title="Total Projects" target={45} />
+              </Grid>
+            </Grid>
+          </Box>
+
+          <Box>
+            <Timeline sx={{ padding: 3 }}>
+              {roadmapData.map((item, index) => (
+                <TimelineItem key={index}>
+                  {index % 2 === 0 ? (
+                    <>
+                      <TimelineContent >
+                        <Box display="inline-block" maxWidth={400}>
+                          <Card sx={{ backgroundColor: item.color, color: secondaryColor, marginTop: 1 }}>
+                            <CardContent>
+                              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>{item.title}</Typography>
+                              {item.description.map((desc, i) => (
+                                <Typography key={i} variant="body2" sx={{ marginTop: 1 }}>{desc}</Typography>
+                              ))}
+                            </CardContent>
+                          </Card>
+                        </Box>
+                      </TimelineContent>
+                      <TimelineSeparator>
+                        <TimelineDot sx={{ backgroundColor: item.color }} />
+                        {index !== roadmapData.length - 1 && <TimelineConnector />}
+                      </TimelineSeparator>
+                      <TimelineContent></TimelineContent>
+                    </>
+                  ) : (
+                    <>
+                      <TimelineContent></TimelineContent>
+                      <TimelineSeparator>
+                        <TimelineDot sx={{ backgroundColor: item.color }} />
+                        {index !== roadmapData.length - 1 && <TimelineConnector />}
+                      </TimelineSeparator>
+                      <TimelineContent>
+                        <Box display="inline-block" maxWidth={400}>
+                          <Card sx={{ backgroundColor: item.color, color: secondaryColor, marginTop: 1 }}>
+                            <CardContent>
+                              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>{item.title}</Typography>
+                              {item.description.map((desc, i) => (
+                                <Typography key={i} variant="body2" sx={{ marginTop: 1 }}>{desc}</Typography>
+                              ))}
+                            </CardContent>
+                          </Card>
+                        </Box>
+                      </TimelineContent>
+                    </>
+                  )}
+                </TimelineItem>
+              ))}
+            </Timeline>
+          </Box>
+
+          <Box sx={{ backgroundImage: 'url("/images/interview.jpg")', padding: "50px 10px" }}>
+            <Grid container spacing={4} alignItems="center">
+              {/* Left Section - Contact Info */}
+              <Grid item xs={12} md={6}>
+                <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
+                  <Typography variant="h4" fontWeight="bold">
+                    Contact <span style={{ fontWeight: "lighter" }}>Information</span>
+                  </Typography>
+                  <Box display="flex" alignItems="center" mt={2}>
+                    <EmailIcon sx={{ mr: 1 }} />
+                    <Typography variant="body1">
+                      <strong>Email:</strong> <a href="mailto:humans@Career Cruise Consulting-me.com" style={{ color: secondaryColor }}>humans@Career Cruise Consulting-me.com</a>
                     </Typography>
-                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
-                      <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
-                      <Typography variant="subtitle1" fontWeight="bold">
-                        {testimonial.name}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {testimonial.role}
-                      </Typography>
-                    </Box>
-                  </CardContent>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <Grid container spacing={4} alignItems="center">
-            {/* Left Section - Contact Info */}
-            <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
-                <Typography variant="h4" fontWeight="bold">
-                  Contact <span style={{ fontWeight: "lighter" }}>Information</span>
-                </Typography>
-                <Box display="flex" alignItems="center" mt={2}>
-                  <EmailIcon sx={{ mr: 1 }} />
-                  <Typography variant="body1">
-                    <strong>Email:</strong> <a href="mailto:humans@sapiens-me.com" style={{ color: secondaryColor }}>humans@sapiens-me.com</a>
-                  </Typography>
-                </Box>
-                <Box display="flex" alignItems="center" mt={2}>
-                  <LocationOnIcon sx={{ mr: 1 }} />
-                  <Typography variant="body1">
-                    <strong>Address:</strong> Office Bldg, Office 307 0136, Dubai Investment Park, Dubai
-                  </Typography>
-                </Box>
-              </Paper>
-            </Grid>
+                  </Box>
+                  <Box display="flex" alignItems="center" mt={2}>
+                    <LocationOnIcon sx={{ mr: 1 }} />
+                    <Typography variant="body1">
+                      <strong>Address:</strong> Office Bldg, Office 307 0136, Dubai Investment Park, Dubai
+                    </Typography>
+                  </Box>
+                </Paper>
+              </Grid>
 
-            {/* Right Section - Contact Form */}
-            <Grid item xs={12} md={6}>
-              <Paper elevation={3} sx={{ p: 3 }}>
-                <Typography variant="h5" gutterBottom>
-                  Get in Touch
-                </Typography>
-                <form>
-                  <TextField fullWidth label="Full Name" variant="outlined" margin="normal" required />
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Email" type="email" variant="outlined" margin="normal" required />
+              {/* Right Section - Contact Form */}
+              <Grid item xs={12} md={6}>
+                <Paper elevation={3} sx={{ p: 3 }}>
+                  <Typography variant="h5" gutterBottom>
+                    Get in Touch
+                  </Typography>
+                  <form>
+                    <TextField fullWidth label="Full Name" variant="outlined" margin="normal" required />
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} sm={6}>
+                        <TextField fullWidth label="Email" type="email" variant="outlined" margin="normal" required />
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField fullWidth label="Phone" type="tel" variant="outlined" margin="normal" required />
+                      </Grid>
                     </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField fullWidth label="Phone" type="tel" variant="outlined" margin="normal" required />
-                    </Grid>
-                  </Grid>
-                  <TextField fullWidth label="Organization Name" variant="outlined" margin="normal" required />
-                  <TextField fullWidth label="How can we help you?" variant="outlined" multiline rows={4} margin="normal" required />
-                  <Button variant="contained" sx={{ mt: 2, backgroundColor: primaryColor, color: secondaryColor }} fullWidth>
-                    Send Message
-                  </Button>
-                </form>
-              </Paper>
+                    <TextField fullWidth label="Organization Name" variant="outlined" margin="normal" required />
+                    <TextField fullWidth label="How can we help you?" variant="outlined" multiline rows={4} margin="normal" required />
+                    <Button variant="contained" sx={{ mt: 2, backgroundColor: primaryColor, color: secondaryColor }} fullWidth>
+                      Send Message
+                    </Button>
+                  </form>
+                </Paper>
+              </Grid>
             </Grid>
-          </Grid>
+          </Box>
         </Box>
       </Box>
     </>

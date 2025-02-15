@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Link } from "@mui/material";
 
 const drawerWidth = 240;
-const primaryColor = "#18A0C3";
+const primaryColor = "#0a5578";
 const secondaryColor = "#FFFFFF";
 
 const Footer = () => {
@@ -20,20 +20,21 @@ const Footer = () => {
       >
          <Typography variant="h6" component="div" sx={{ color: secondaryColor }}>
             <Link
-               href="mailto:humans@sapiens-me.com"
+               href="mailto:humans@Career Cruise Consulting-me.com"
                sx={{ color: secondaryColor, textDecoration: "none" }}
             >
-               humans@sapiens-me.com
+               humans@Career Cruise Consulting-me.com
             </Link>
          </Typography>
          <Box
             component="img"
-            src="https://sapiens-me.com/wp-content/uploads/2024/07/white-logo.png"
-            alt="Sapiens ME logo white"
+            src="/images/logo.png"
+            alt="Career Cruise Consulting ME logo white"
             sx={{
-               width: "200px",
+               width: "150px",
                height: "auto",
                marginTop: "10px",
+               borderRadius:"25px"
             }}
          />
       </Box>

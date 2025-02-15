@@ -23,7 +23,7 @@ import { ThumbUp, Chat, SupportAgent, BusinessCenter } from "@mui/icons-material
 
 
 const drawerWidth = 240;
-const primaryColor = "#18A0C3";
+const primaryColor = "#0a5578";
 const secondaryColor = "#FFFFFF";
 
 const roles = [
@@ -97,13 +97,14 @@ const index = () => {
                     paddingTop: "64px", // To avoid overlap with AppBar
                 }}
             >
-                 <List>
-                            {menuItems.map(({ text, route }) => (
-                              <ListItem key={text} component={Link} href={route}>
-                                <ListItemText sx={{ color: "#fff" }} primary={text} />
-                              </ListItem>
-                            ))}
-                          </List>
+
+                <List>
+                    {menuItems.map(({ text, route }) => (
+                        <ListItem key={text} component={Link} href={route}>
+                            <ListItemText sx={{ color: "#fff" }} primary={text} />
+                        </ListItem>
+                    ))}
+                </List>
             </Box>
             <Box
                 component="main"
@@ -115,50 +116,54 @@ const index = () => {
                     backgroundColor: secondaryColor,
                     height: "100%",
                     width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
+
                 }}
             >
-
-                <Typography
-                    variant="h4"
-                    component="h2"
-                    sx={{
-                        fontWeight: "bold",
-                        color: "#333",
-                        animation: "fadeInUp 1s",
-                    }}
-                >
-                    About <span style={{ color: "#18A0C3" }}>Sapiens.</span> - The Event
-                    Staffing Agency Dubai
-                </Typography>
-                <Typography
-                    variant="body1"
-                    sx={{
-                        marginTop: 2,
-                        color: "#666",
-                        animation: "fadeIn 1s",
-                    }}
-                >
-                    With over a decade of experience, Sapiens, an event staffing agency in
-                    Dubai, specializes in understanding your unique needs and providing
-                    tailored solutions whenever event staff is required, ensuring your
-                    events run smoothly.
-                </Typography>
-                <Button
-                    variant="outlined"
-                    href="#contact"
-                    sx={{
-                        marginTop: 3,
-                        borderColor: "#18A0C3",
-                        color: "#18A0C3",
-                        animation: "fadeInUp 1s",
-                        ":hover": {
-                            backgroundColor: "#18A0C3",
-                            color: "#FFFFFF",
-                        },
-                    }}
-                >
-                    Start Hiring
-                </Button>
+                <Box sx={{ padding: "40px 0px 70px 0", textAlign: "center" }}>
+                    <Typography
+                        variant="h4"
+                        component="h2"
+                        sx={{
+                            fontWeight: "bold",
+                            color: "#333",
+                            animation: "fadeInUp 1s",
+                            marginTop: "60px",
+                            textAlign: "center"
+                        }}
+                    >
+                        About <span style={{ color: "#0a5578" }}>Career Cruise Consulting.</span> - The Event
+                        Staffing Agency Dubai
+                    </Typography>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            marginTop: 2,
+                            color: "#666",
+                            animation: "fadeIn 1s",
+                        }}
+                    >
+                        With over a decade of experience, Career Cruise Consulting, an event staffing agency in
+                        Dubai, specializes in understanding your unique needs and providing
+                        tailored solutions whenever event staff is required, ensuring your
+                        events run smoothly.
+                    </Typography>
+                    <Button
+                        variant="outlined"
+                        href="#contact"
+                        sx={{
+                            marginTop: 3,
+                            borderColor: "#18A0C3",
+                            color: "#18A0C3",
+                            animation: "fadeInUp 1s",
+                            ":hover": {
+                                backgroundColor: "#18A0C3",
+                                color: "#FFFFFF",
+                            },
+                        }}
+                    >
+                        Start Hiring
+                    </Button>
+                </Box>
 
                 <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
                     <Toolbar>
@@ -166,78 +171,115 @@ const index = () => {
                         <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
                             <MenuIcon />
                         </IconButton>
-
-                        <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
+                        <Box
+                            component="img"
+                            src="/images/logo.png"
+                            alt="Career Cruise Consulting ME logo white"
+                            sx={{
+                                width: "80px",
+                                height: "auto",
+                                marginTop: "10px",
+                                marginRight: "20px",
+                                borderRadius: "7px"
+                            }}
+                        />
+                        {/* <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
                             Career Cruise Consulting
-                        </Typography>
+                        </Typography> */}
                     </Toolbar>
                 </AppBar>
-                <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: "30px" }}>
-                    Why Work with <span style={{ color: primaryColor }}>Sapiens?</span>
+
+
+                <Box sx={{ padding: "0px 0px 70px 0", textAlign: "center" }}>
+
+
+                    <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: "30px", textAlign: "center" }}>
+                        Why Work with <span style={{ color: primaryColor }}>Career Cruise Consulting?</span>
+                    </Typography>
+
+                    <Grid container spacing={4} justifyContent="center">
+                        {features.map((feature, index) => (
+                            <Grid item xs={12} sm={6} md={3} key={index}>
+                                <Box
+                                    sx={{
+                                        padding: "20px",
+                                        borderRadius: "8px",
+                                        boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+                                        transition: "transform 0.3s",
+                                        "&:hover": { transform: "scale(1.05)" },
+                                    }}
+                                >
+                                    {feature.icon}
+                                    <Typography variant="h6" fontWeight="bold" sx={{ marginTop: "15px" }}>
+                                        {feature.title}
+                                    </Typography>
+                                    <Typography variant="body2" sx={{ marginTop: "10px" }}>
+                                        {feature.description}
+                                    </Typography>
+                                </Box>
+                            </Grid>
+                        ))}
+                    </Grid>
+
+                    <Button
+                        variant="outlined"
+                        sx={{
+                            marginTop: "40px",
+                            borderColor: primaryColor,
+                            color: primaryColor,
+                            padding: "10px 20px",
+                            fontWeight: "bold",
+                            "&:hover": {
+                                backgroundColor: primaryColor,
+                                color: secondaryColor,
+                            },
+                        }}
+                        href="#contact"
+                    >
+                        Request a Consultation
+                    </Button>
+
+                </Box>
+
+                <Typography variant="h4" component="h2" sx={{ textAlign: "center" }} gutterBottom>
+                    We got you <strong style={{ color: primaryColor }}>covered.</strong>
                 </Typography>
 
-                <Grid container spacing={4} justifyContent="center">
-                    {features.map((feature, index) => (
-                        <Grid item xs={12} sm={6} md={3} key={index}>
-                            <Box
-                                sx={{
-                                    padding: "20px",
-                                    borderRadius: "8px",
-                                    boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
-                                    transition: "transform 0.3s",
-                                    "&:hover": { transform: "scale(1.05)" },
-                                }}
-                            >
-                                {feature.icon}
-                                <Typography variant="h6" fontWeight="bold" sx={{ marginTop: "15px" }}>
-                                    {feature.title}
-                                </Typography>
-                                <Typography variant="body2" sx={{ marginTop: "10px" }}>
-                                    {feature.description}
-                                </Typography>
-                            </Box>
+                <Grid item xs={12} container spacing={2}>
+                    <Grid item xs={12} md={9} sx={{ paddingRight: "20px" }}>
+                        <Typography variant="body1" paragraph>
+                            Freelancers of the highest caliber to support various roles for your event
+                            through our event staffing agency in Dubai. Whether you need <strong style={{ color: primaryColor }}>pre-event
+                                support, hostesses in Dubai, or on-site personnel during the live phase</strong>,
+                            we ensure a flawless experience from beginning to end.
+                        </Typography>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={12} md={12}>
+                                <List>
+                                    <Grid container spacing={2}>
+                                        {roles.map((role, index) => (
+                                            <Grid item xs={12} sm={6} md={4} key={index}> {/* 3 per row on md+ screens */}
+                                                <ListItem style={{ border: "solid 1px", marginRight: "5px" }}>
+                                                    <ListItemIcon style={{ minWidth: "29px" }}>
+                                                        <CheckCircleIcon style={{ maxWidth: "42px" }} color="primary" />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary={role} />
+                                                </ListItem>
+                                            </Grid>
+                                        ))}
+                                    </Grid>
+                                </List>
+                            </Grid>
                         </Grid>
-                    ))}
+
+
+                    </Grid>
+                    <Grid item xs={12} sx={{ backgroundImage: 'url("/images/first.jpg")' }} md={3}>
+
+                    </Grid>
                 </Grid>
 
-                <Button
-                    variant="outlined"
-                    sx={{
-                        marginTop: "40px",
-                        borderColor: primaryColor,
-                        color: primaryColor,
-                        padding: "10px 20px",
-                        fontWeight: "bold",
-                        "&:hover": {
-                            backgroundColor: primaryColor,
-                            color: secondaryColor,
-                        },
-                    }}
-                    href="#contact"
-                >
-                    Request a Consultation
-                </Button>
-
-
-                <Typography variant="h4" component="h2" gutterBottom>
-                    We got you <strong>covered.</strong>
-                </Typography>
-                <Typography variant="body1" paragraph>
-                    Freelancers of the highest caliber to support various roles for your event
-                    through our event staffing agency in Dubai. Whether you need <strong>pre-event
-                        support, hostesses in Dubai, or on-site personnel during the live phase</strong>,
-                    we ensure a flawless experience from beginning to end.
-                </Typography>
-                <List>
-                    {roles.map((role, index) => (
-                        <ListItem key={index}>
-                            <ListItemIcon>
-                                <CheckCircleIcon color="primary" />
-                            </ListItemIcon>
-                            <ListItemText primary={role} />
-                        </ListItem>
-                    ))}
-                </List>
             </Box>
         </>
     );
