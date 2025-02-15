@@ -63,13 +63,20 @@ function index() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!formData.firstName || !formData.lastName || !formData.email) {
+      alert("Please fill all required fields.");
+      return;
+    }
+  // alert(formData)
     try {
-      const response = await axios.post("/api/apply", formData);
+      const response = await axios.post(`http://localhost:5000/api/form`, formData);
       alert("Application submitted successfully!");
+     
     } catch (error) {
       alert("Error submitting application");
     }
   };
+  
 
 
   return (

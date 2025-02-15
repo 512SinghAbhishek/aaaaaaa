@@ -23,6 +23,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
+import axios from "axios";
 
 import MenuIcon from "@mui/icons-material/Menu";
 
@@ -77,7 +78,7 @@ const roadmapData = [
       "Approach airlines, travel & tourism"
     ]
   },
- 
+
 ];
 
 
@@ -158,6 +159,29 @@ const Header = () => {
         </CardContent>
       </Card>
     );
+  };
+
+  const [formData, setFormData] = useState({
+    fullName: "",
+    email: "",
+    phone: "",
+    organizationName: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:5000/api/contact", formData);
+      alert(response.data.message);
+      setFormData({ fullName: "", email: "", phone: "", organizationName: "", message: "" });
+    } catch (error) {
+      alert("Error: " + error.response?.data?.error || "Something went wrong");
+    }
   };
 
   return (
@@ -479,19 +503,19 @@ const Header = () => {
                   <Typography variant="h5" gutterBottom>
                     Get in Touch
                   </Typography>
-                  <form>
-                    <TextField fullWidth label="Full Name" variant="outlined" margin="normal" required />
+                  <form onSubmit={handleSubmit}>
+                    <TextField fullWidth label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} variant="outlined" margin="normal" required />
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Email" type="email" variant="outlined" margin="normal" required />
+                        <TextField fullWidth label="Email" name="email" type="email" value={formData.email} onChange={handleChange} variant="outlined" margin="normal" required />
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <TextField fullWidth label="Phone" type="tel" variant="outlined" margin="normal" required />
+                        <TextField fullWidth label="Phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} variant="outlined" margin="normal" required />
                       </Grid>
                     </Grid>
-                    <TextField fullWidth label="Organization Name" variant="outlined" margin="normal" required />
-                    <TextField fullWidth label="How can we help you?" variant="outlined" multiline rows={4} margin="normal" required />
-                    <Button variant="contained" sx={{ mt: 2, backgroundColor: primaryColor, color: secondaryColor }} fullWidth>
+                    <TextField fullWidth label="Organization Name" name="organizationName" value={formData.organizationName} onChange={handleChange} variant="outlined" margin="normal" required />
+                    <TextField fullWidth label="How can we help you?" name="message" value={formData.message} onChange={handleChange} variant="outlined" multiline rows={4} margin="normal" required />
+                    <Button type="submit" variant="contained" sx={{ mt: 2 }} fullWidth>
                       Send Message
                     </Button>
                   </form>
