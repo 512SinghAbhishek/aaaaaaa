@@ -97,15 +97,13 @@ const index = () => {
                     paddingTop: "64px", // To avoid overlap with AppBar
                 }}
             >
-                <List>
-                    {menuItems.map(({ text, route }) => (
-                        <Link href={route} key={text} passHref legacyBehavior>
-                            <ListItem button component="a">
-                                <ListItemText sx={{color:"#fff"}} primary={text} />
-                            </ListItem>
-                        </Link>
-                    ))}
-                </List>
+                 <List>
+                            {menuItems.map(({ text, route }) => (
+                              <ListItem key={text} component={Link} href={route}>
+                                <ListItemText sx={{ color: "#fff" }} primary={text} />
+                              </ListItem>
+                            ))}
+                          </List>
             </Box>
             <Box
                 component="main"

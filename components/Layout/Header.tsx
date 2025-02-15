@@ -70,7 +70,7 @@ const Header = () => {
   ];
 
   return (
-    
+
     <>
       <Box sx={{ display: "flex" }}>
 
@@ -91,11 +91,9 @@ const Header = () => {
         >
           <List>
             {menuItems.map(({ text, route }) => (
-              <Link href={route} key={text} passHref legacyBehavior>
-                <ListItem button component="a">
-                  <ListItemText sx={{color:"#fff"}} primary={text} />
-                </ListItem>
-              </Link>
+              <ListItem key={text} component={Link} href={route}>
+                <ListItemText sx={{ color: "#fff" }} primary={text} />
+              </ListItem>
             ))}
           </List>
         </Box>
@@ -232,85 +230,85 @@ const Header = () => {
             </Box>
           </Box>
           <Typography variant="h4" fontWeight="bold" color={secondaryColor}>
-        What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
-      </Typography>
+            What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
+          </Typography>
 
-      <Swiper
-        modules={[Pagination, Autoplay]}
-        slidesPerView={2}
-        spaceBetween={30}
-        autoplay={{ delay: 3000 }}
-        pagination={{ clickable: true }}
-        style={{ padding: "20px", maxWidth: "80%", margin: "auto" }}
-      >
-        {testimonials.map((testimonial, index) => (
-          <SwiperSlide key={index}>
-            <Card sx={{ backgroundColor: secondaryColor, borderRadius: "10px", boxShadow: 3 }}>
-              <CardContent>
-                <Typography variant="h6" fontStyle="italic">
-                  “{testimonial.quote}”
+          <Swiper
+            modules={[Pagination, Autoplay]}
+            slidesPerView={2}
+            spaceBetween={30}
+            autoplay={{ delay: 3000 }}
+            pagination={{ clickable: true }}
+            style={{ padding: "20px", maxWidth: "80%", margin: "auto" }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <SwiperSlide key={index}>
+                <Card sx={{ backgroundColor: secondaryColor, borderRadius: "10px", boxShadow: 3 }}>
+                  <CardContent>
+                    <Typography variant="h6" fontStyle="italic">
+                      “{testimonial.quote}”
+                    </Typography>
+                    <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
+                      <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
+                      <Typography variant="subtitle1" fontWeight="bold">
+                        {testimonial.name}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {testimonial.role}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                </Card>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <Grid container spacing={4} alignItems="center">
+            {/* Left Section - Contact Info */}
+            <Grid item xs={12} md={6}>
+              <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
+                <Typography variant="h4" fontWeight="bold">
+                  Contact <span style={{ fontWeight: "lighter" }}>Information</span>
                 </Typography>
-                <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
-                  <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
-                  <Typography variant="subtitle1" fontWeight="bold">
-                    {testimonial.name}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {testimonial.role}
+                <Box display="flex" alignItems="center" mt={2}>
+                  <EmailIcon sx={{ mr: 1 }} />
+                  <Typography variant="body1">
+                    <strong>Email:</strong> <a href="mailto:humans@sapiens-me.com" style={{ color: secondaryColor }}>humans@sapiens-me.com</a>
                   </Typography>
                 </Box>
-              </CardContent>
-            </Card>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <Grid container spacing={4} alignItems="center">
-        {/* Left Section - Contact Info */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
-            <Typography variant="h4" fontWeight="bold">
-              Contact <span style={{ fontWeight: "lighter" }}>Information</span>
-            </Typography>
-            <Box display="flex" alignItems="center" mt={2}>
-              <EmailIcon sx={{ mr: 1 }} />
-              <Typography variant="body1">
-                <strong>Email:</strong> <a href="mailto:humans@sapiens-me.com" style={{ color: secondaryColor }}>humans@sapiens-me.com</a>
-              </Typography>
-            </Box>
-            <Box display="flex" alignItems="center" mt={2}>
-              <LocationOnIcon sx={{ mr: 1 }} />
-              <Typography variant="body1">
-                <strong>Address:</strong> Office Bldg, Office 307 0136, Dubai Investment Park, Dubai
-              </Typography>
-            </Box>
-          </Paper>
-        </Grid>
+                <Box display="flex" alignItems="center" mt={2}>
+                  <LocationOnIcon sx={{ mr: 1 }} />
+                  <Typography variant="body1">
+                    <strong>Address:</strong> Office Bldg, Office 307 0136, Dubai Investment Park, Dubai
+                  </Typography>
+                </Box>
+              </Paper>
+            </Grid>
 
-        {/* Right Section - Contact Form */}
-        <Grid item xs={12} md={6}>
-          <Paper elevation={3} sx={{ p: 3 }}>
-            <Typography variant="h5" gutterBottom>
-              Get in Touch
-            </Typography>
-            <form>
-              <TextField fullWidth label="Full Name" variant="outlined" margin="normal" required />
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField fullWidth label="Email" type="email" variant="outlined" margin="normal" required />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField fullWidth label="Phone" type="tel" variant="outlined" margin="normal" required />
-                </Grid>
-              </Grid>
-              <TextField fullWidth label="Organization Name" variant="outlined" margin="normal" required />
-              <TextField fullWidth label="How can we help you?" variant="outlined" multiline rows={4} margin="normal" required />
-              <Button variant="contained" sx={{ mt: 2, backgroundColor: primaryColor, color: secondaryColor }} fullWidth>
-                Send Message
-              </Button>
-            </form>
-          </Paper>
-        </Grid>
-      </Grid>
+            {/* Right Section - Contact Form */}
+            <Grid item xs={12} md={6}>
+              <Paper elevation={3} sx={{ p: 3 }}>
+                <Typography variant="h5" gutterBottom>
+                  Get in Touch
+                </Typography>
+                <form>
+                  <TextField fullWidth label="Full Name" variant="outlined" margin="normal" required />
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label="Email" type="email" variant="outlined" margin="normal" required />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                      <TextField fullWidth label="Phone" type="tel" variant="outlined" margin="normal" required />
+                    </Grid>
+                  </Grid>
+                  <TextField fullWidth label="Organization Name" variant="outlined" margin="normal" required />
+                  <TextField fullWidth label="How can we help you?" variant="outlined" multiline rows={4} margin="normal" required />
+                  <Button variant="contained" sx={{ mt: 2, backgroundColor: primaryColor, color: secondaryColor }} fullWidth>
+                    Send Message
+                  </Button>
+                </form>
+              </Paper>
+            </Grid>
+          </Grid>
         </Box>
       </Box>
     </>
