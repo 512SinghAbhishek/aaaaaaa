@@ -20,6 +20,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import "swiper/css";
 import "swiper/css/pagination";
 import { ThumbUp, Chat, SupportAgent, BusinessCenter } from "@mui/icons-material";
+import Navbar from "../../components/Layout/Navbar";
 
 
 const drawerWidth = 240;
@@ -83,7 +84,7 @@ const index = () => {
     ];
     return (
         <>
-            <Box
+            {/* <Box
                 sx={{
                     width: sidebarOpen ? drawerWidth : 0,
                     overflow: "hidden",
@@ -97,26 +98,27 @@ const index = () => {
                     paddingTop: "64px", // To avoid overlap with AppBar
                 }}
             >
-
-                <List>
-                    {menuItems.map(({ text, route }) => (
-                        <ListItem key={text} component={Link} href={route}>
-                            <ListItemText sx={{ color: "#fff" }} primary={text} />
-                        </ListItem>
-                    ))}
+            
+            <List>
+            {menuItems.map(({ text, route }) => (
+                <ListItem key={text} component={Link} href={route}>
+                <ListItemText sx={{ color: "#fff" }} primary={text} />
+                </ListItem>
+                ))}
                 </List>
-            </Box>
+                </Box> */}
+                <Navbar />
             <Box
                 component="main"
                 sx={{
                     flexGrow: 1,
                     p: 3,
-                    ml: sidebarOpen ? `${drawerWidth}px` : 0,
+                    // ml: sidebarOpen ? `${drawerWidth}px` : 0,
                     transition: "margin 0.3s ease-in-out",
                     backgroundColor: secondaryColor,
                     height: "100%",
-                    width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
-
+                    // width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
+                    
                 }}
             >
                 <Box sx={{ padding: "40px 0px 70px 0", textAlign: "center" }}>
@@ -164,30 +166,6 @@ const index = () => {
                         Start Hiring
                     </Button>
                 </Box>
-
-                <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
-                    <Toolbar>
-                        {/* Toggle Sidebar Button */}
-                        <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
-                            <MenuIcon />
-                        </IconButton>
-                        <Box
-                            component="img"
-                            src="/images/logo.png"
-                            alt="Career Cruise Consulting ME logo white"
-                            sx={{
-                                width: "80px",
-                                height: "auto",
-                                marginTop: "10px",
-                                marginRight: "20px",
-                                borderRadius: "7px"
-                            }}
-                        />
-                        {/* <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
-                            Career Cruise Consulting
-                        </Typography> */}
-                    </Toolbar>
-                </AppBar>
 
 
                 <Box sx={{ padding: "0px 0px 70px 0", textAlign: "center" }}>

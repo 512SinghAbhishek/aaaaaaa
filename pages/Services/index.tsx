@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import MenuIcon from "@mui/icons-material/Menu";
+import Navbar from "../../components/Layout/Navbar";
 
 const drawerWidth = 240;
 const primaryColor = "#0a5578";
@@ -69,7 +70,9 @@ function index() {
     }
   // alert(formData)
     try {
-      const response = await axios.post(`http://localhost:5000/api/form`, formData);
+      // const response = await axios.post(`https://carrerapi-production.up.railway.app/api/form`, formData);
+      const response = await axios.post(`xyz/form`, formData);
+
       alert("Application submitted successfully!");
      
     } catch (error) {
@@ -81,7 +84,7 @@ function index() {
 
   return (
     <div>
-      <Box
+      {/* <Box
         sx={{
           width: sidebarOpen ? drawerWidth : 0,
           overflow: "hidden",
@@ -102,48 +105,22 @@ function index() {
             </ListItem>
           ))}
         </List>
-      </Box>
+      </Box> */}
 
       {/* Main Content */}
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          p: 3,
-          ml: sidebarOpen ? `${drawerWidth}px` : 0,
+          // p: 3,
+          // ml: sidebarOpen ? `${drawerWidth}px` : 0,
           transition: "margin 0.3s ease-in-out",
           backgroundColor: secondaryColor,
           height: "100%",
-          width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
+          // width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
         }}
       >
-        {/* Top Navbar */}
-        <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
-          <Toolbar>
-            {/* Toggle Sidebar Button */}
-            <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
-              <MenuIcon />
-            </IconButton>
-            <Box
-              component="img"
-              src="/images/logo.png"
-              alt="Career Cruise Consulting ME logo white"
-              sx={{
-                width: "80px",
-                height: "auto",
-                marginTop: "10px",
-                marginRight: "20px",
-                borderRadius: "7px"
-              }}
-            />
-            {/* <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
-              Career Cruise Consulting
-            </Typography> */}
-          </Toolbar>
-        </AppBar>
-
-        <Toolbar />
-
+     <Navbar />
 
         <Box sx={{ backgroundColor: secondaryColor, padding: 3, borderRadius: 2 }}>
           <Typography variant="h4" sx={{ color: primaryColor, marginBottom: 2 }}>Apply for Job</Typography>

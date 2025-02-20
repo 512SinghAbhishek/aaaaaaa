@@ -20,12 +20,17 @@ import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Flip } from "react-awesome-reveal";
+import BusinessIcon from "@mui/icons-material/Business";
+import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import GroupIcon from "@mui/icons-material/Group";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import axios from "axios";
 
 import MenuIcon from "@mui/icons-material/Menu";
+import Navbar from "./Navbar";
 
 const drawerWidth = 240;
 const primaryColor = "#0a5578";
@@ -176,7 +181,9 @@ const Header = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://localhost:5000/api/contact", formData);
+      // const response = await axios.post("https://carrerapi-production.up.railway.app/api/contact", formData);
+      const response = await axios.post("xyz/contact", formData);
+
       alert(response.data.message);
       setFormData({ fullName: "", email: "", phone: "", organizationName: "", message: "" });
     } catch (error) {
@@ -184,13 +191,47 @@ const Header = () => {
     }
   };
 
+  const FlipBox = ({ icon, title, description }) => {
+    return (
+      <Flip>
+        <Card sx={{ width: 300, height: 200, textAlign: "center", p: 2, cursor: "pointer" }}>
+          <CardContent>
+            <IconButton>{icon}</IconButton>
+            <Typography variant="h6" fontWeight="bold" gutterBottom>
+              {title}
+            </Typography>
+            <Typography variant="body2">{description}</Typography>
+          </CardContent>
+        </Card>
+      </Flip>
+    );
+  };
+
+  const parseValue = (value) => {
+    if (typeof value === "string") {
+      return parseFloat(value.replace(/[^0-9.]/g, "")) || 0; // Remove non-numeric characters
+    }
+    return value;
+  };
+
+  const stats = [
+    // { title: "Total Clients", value: 500 },
+    // { title: "Total Employees", value: 5845 },
+    // { title: "Total Projects", value: 45 },
+    { title: "Years Experience", value: parseValue("20+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/exp.png" },
+    { title: "Dedicated Team", value: parseValue("100+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/team.png" },
+    { title: "Hired Via Links", value: parseValue("40,000+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/hire.png" },
+    { title: "DataBase", value: parseValue("1M+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/data.png" },
+    { title: "Compliance", value: parseValue("100%"), image: "https://linksuae.ae/wp-content/uploads/2025/01/comp.png" }
+  ];
+
   return (
 
     <>
       <Box sx={{ display: "flex" }}>
 
         {/* Sidebar (Not Drawer) */}
-        <Box
+        {/* <Box
           sx={{
             width: sidebarOpen ? drawerWidth : 0,
             overflow: "hidden",
@@ -211,25 +252,26 @@ const Header = () => {
               </ListItem>
             ))}
           </List>
-        </Box>
+        </Box> */}
 
         {/* Main Content */}
         <Box
           component="main"
           sx={{
             flexGrow: 1,
-            p: 3,
-            ml: sidebarOpen ? `${drawerWidth}px` : 0,
+            // p: 3,
+            // ml: sidebarOpen ? `${drawerWidth}px` : 0,
             transition: "margin 0.3s ease-in-out",
             backgroundColor: secondaryColor,
             height: "100%",
             width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
           }}
         >
+         
           {/* Top Navbar */}
-          <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
+          {/* <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
             <Toolbar>
-              {/* Toggle Sidebar Button */}
+              
               <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
                 <MenuIcon />
               </IconButton>
@@ -245,13 +287,12 @@ const Header = () => {
                   borderRadius: "7px"
                 }}
               />
-              {/* <Typography variant="h6" noWrap sx={{ color: secondaryColor }}>
-                Career Cruise Consulting
-              </Typography> */}
+              
             </Toolbar>
-          </AppBar>
+          </AppBar> */}
 
-          <Toolbar />
+          {/* <Toolbar /> */}
+          <Navbar />
 
           <Box className="Head" sx={{ backgroundImage: 'url("/images/1723224215434.png")', height: "500px" }}>
             <Container maxWidth="md" sx={{ padding: "100px 0" }}>
@@ -406,7 +447,7 @@ const Header = () => {
             </Swiper>
           </Box>
 
-          <Box sx={{ margin: "20px 0 50px 0" }}>
+          {/* <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
             </Typography>
@@ -422,9 +463,49 @@ const Header = () => {
                 <CounterCard title="Total Projects" target={45} />
               </Grid>
             </Grid>
+          </Box> */}
+
+          <Box sx={{ margin: "20px 0 50px 0" }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
+            </Typography>
+
+            <Grid container spacing={2} justifyContent="center" sx={{ padding: 3 }}>
+              {stats.map((stat, index) => (
+                <Grid item key={index}>
+                  <CounterCard title={stat.title} target={stat.value} />
+                </Grid>
+              ))}
+            </Grid>
           </Box>
 
-          <Box>
+          <Box sx={{ margin: "20px 0 50px 0" }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+            Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
+            </Typography>
+            <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2}>
+
+              <FlipBox
+                icon={<BusinessIcon fontSize="large" color="primary" />}
+                title="Visa Outsourcing"
+                description="Navigate Visa Complexities with Seamless Solutions Backed by Proven Expertise."
+              />
+              <FlipBox
+                icon={<CalendarTodayIcon fontSize="large" color="primary" />}
+                title="Permanent Staffing"
+                description="Fuel Long-Term Success with Handpicked Permanent Talent, we build future-ready teams."
+              />
+              <FlipBox
+                icon={<GroupIcon fontSize="large" color="primary" />}
+                title="HR Outsourcing"
+                description="Our dynamic HR outsourcing solutions are crafted to simplify workforce management."
+              />
+            </Box>
+          </Box>
+          <Box sx={{ margin: "20px 0 50px 0" }}>
+          <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+             <span style={{ color: primaryColor }}>Roadmap</span>
+            </Typography>
             <Timeline sx={{ padding: 3 }}>
               {roadmapData.map((item, index) => (
                 <TimelineItem key={index}>
@@ -475,6 +556,7 @@ const Header = () => {
           </Box>
 
           <Box sx={{ backgroundImage: 'url("/images/interview.jpg")', padding: "50px 10px" }}>
+          
             <Grid container spacing={4} alignItems="center">
               {/* Left Section - Contact Info */}
               <Grid item xs={12} md={6}>
