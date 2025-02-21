@@ -1,50 +1,257 @@
-import { AppBar, Toolbar, Box, Tabs, Tab } from "@mui/material";
-import { useState } from "react";
-import Link from "next/link";
+// // import { AppBar, Toolbar, Box, Tabs, Tab } from "@mui/material";
+// // import { useState } from "react";
+// // import Link from "next/link";
+// // import DashboardIcon from "@mui/icons-material/Dashboard";
+// // import ContactsIcon from "@mui/icons-material/Contacts";
+// // import LayersIcon from "@mui/icons-material/Layers";
+// // import EventIcon from "@mui/icons-material/Event";
+// // import InsertChartIcon from "@mui/icons-material/InsertChart";
+// // import DescriptionIcon from "@mui/icons-material/Description";
+
+// // const primaryColor = "#0a5578";
+// // const secondaryColor = "#FFFFFF";
+
+// // const Navbar = () => {
+// //   const [value, setValue] = useState(0); // Default active tab index
+
+// //   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+// //     setValue(newValue);
+// //   };
+
+// //   return (
+// //     <AppBar position="static" sx={{ backgroundColor: primaryColor, boxShadow: "none" }}>
+// //       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+// //         {/* Logo on the left */}
+// //         <Box
+// //           component="img"
+// //           src="/images/logo.png"
+// //           alt="Career Cruise Consulting ME logo white"
+// //           sx={{
+// //             width: "80px",
+// //             height: "auto",
+// //             marginTop: "10px",
+// //             marginRight: "20px",
+// //             borderRadius: "7px",
+// //           }}
+// //         />
+
+// //         {/* Menu on the right */}
+// //         <div className="nav_menu">
+// //           <Tabs
+// //             value={value}
+// //             onChange={handleChange}
+// //             textColor="inherit"
+// //             TabIndicatorProps={{ style: { display: "none" } }} // Hide default indicator
+// //             sx={{
+// //               "& .MuiTab-root": {
+// //                 color: "rgba(255, 255, 255, 0.7)", // Default tab color
+// //                 textTransform: "none",
+// //                 fontWeight: 500,
+// //                 padding: "6px 12px",
+// //                 borderRadius: "5px",
+// //                 minHeight: "auto",
+// //               },
+// //               "& .Mui-selected": {
+// //                 color: primaryColor,
+// //                 backgroundColor: secondaryColor,
+// //                 borderRadius: "5px",
+// //               },
+// //             }}
+// //           >
+// //             <Tab component={Link} href="/" icon={<DashboardIcon />} label="Home" />
+// //             <Tab component={Link} href="/About" icon={<ContactsIcon />} label="About" />
+// //             <Tab component={Link} href="/Services" icon={<LayersIcon />} label="Apply" />
+// //             <Tab component={Link} href="/calendar" icon={<EventIcon />} label="Calendar" />
+// //             <Tab component={Link} href="/charts" icon={<InsertChartIcon />} label="Charts" />
+// //             <Tab component={Link} href="/documents" icon={<DescriptionIcon />} label="Documents" />
+// //           </Tabs>
+// //         </div>
+// //       </Toolbar>
+// //     </AppBar>
+// //   );
+// // };
+
+// // export default Navbar;
+
+
+
+
+// import { useState } from "react";
+// import { AppBar, Toolbar, Box, Tabs, Tab, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
+// import DashboardIcon from "@mui/icons-material/Dashboard";
+// import ContactsIcon from "@mui/icons-material/Contacts";
+// import LayersIcon from "@mui/icons-material/Layers";
+// import EventIcon from "@mui/icons-material/Event";
+// import InsertChartIcon from "@mui/icons-material/InsertChart";
+// import DescriptionIcon from "@mui/icons-material/Description";
+// import Link from "next/link";
+
+// const primaryColor = "#0a5578";
+// const secondaryColor = "#FFFFFF";
+
+// const Navbar = () => {
+//   const [value, setValue] = useState(0);
+//   const [drawerOpen, setDrawerOpen] = useState(false);
+//   const isMobile = useMediaQuery("(max-width: 768px)");
+
+//   const handleChange = (event, newValue) => {
+//     setValue(newValue);
+//   };
+
+//   const toggleDrawer = (open) => () => {
+//     setDrawerOpen(open);
+//   };
+
+//   const menuItems = [
+//     { text: "Home", href: "/", icon: <DashboardIcon /> },
+//     { text: "About", href: "/About", icon: <ContactsIcon /> },
+//     { text: "Apply", href: "/Services", icon: <LayersIcon /> },
+//     { text: "Calendar", href: "/calendar", icon: <EventIcon /> },
+//     { text: "Charts", href: "/charts", icon: <InsertChartIcon /> },
+//     { text: "Documents", href: "/documents", icon: <DescriptionIcon /> },
+//   ];
+
+//   return (
+//     <AppBar position="static" sx={{ backgroundColor: primaryColor, boxShadow: "none" }}>
+//       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+//         <Box
+//           component="img"
+//           src="/images/logo.png"
+//           alt="Career Cruise Consulting ME logo white"
+//           sx={{ width: "80px", height: "auto", marginTop: "10px", borderRadius: "5px" }}
+//         />
+//         {isMobile ? (
+//           <>
+//             <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
+//               <MenuIcon />
+//             </IconButton>
+//             <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+//               <List>
+//                 {menuItems.map((item, index) => (
+//                   <ListItem key={index} component={Link} href={item.href} onClick={toggleDrawer(false)}>
+//                     <ListItemIcon>{item.icon}</ListItemIcon>
+//                     <ListItemText primary={item.text} />
+//                   </ListItem>
+//                 ))}
+//               </List>
+//             </Drawer>
+//           </>
+//         ) : (
+//           <Tabs
+//             value={value}
+//             onChange={handleChange}
+//             textColor="inherit"
+//             TabIndicatorProps={{ style: { display: "none" } }}
+//             sx={{
+//               "& .MuiTab-root": {
+//                 color: "rgba(255, 255, 255, 0.7)",
+//                 textTransform: "none",
+//                 fontWeight: 500,
+//                 padding: "6px 12px",
+//                 borderRadius: "5px",
+//                 minHeight: "auto",
+//               },
+//               "& .Mui-selected": {
+//                 color: primaryColor,
+//                 backgroundColor: secondaryColor,
+//                 borderRadius: "5px",
+//               },
+//             }}
+//           >
+//             {menuItems.map((item, index) => (
+//               <Tab key={index} component={Link} href={item.href} icon={item.icon} label={item.text} />
+//             ))}
+//           </Tabs>
+//         )}
+//       </Toolbar>
+//     </AppBar>
+//   );
+// };
+
+// export default Navbar;
+
+
+
+
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
+import { AppBar, Toolbar, Box, Tabs, Tab, IconButton, Drawer, List, ListItem, ListItemIcon, ListItemText, useMediaQuery } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import LayersIcon from "@mui/icons-material/Layers";
 import EventIcon from "@mui/icons-material/Event";
 import InsertChartIcon from "@mui/icons-material/InsertChart";
 import DescriptionIcon from "@mui/icons-material/Description";
+import Link from "next/link";
 
 const primaryColor = "#0a5578";
 const secondaryColor = "#FFFFFF";
 
-const Navbar = () => {
-  const [value, setValue] = useState(0); // Default active tab index
+const menuItems = [
+  { text: "Home", href: "/", icon: <DashboardIcon /> },
+  { text: "About", href: "/About", icon: <ContactsIcon /> },
+  { text: "Apply", href: "/Services", icon: <LayersIcon /> },
+  { text: "Calendar", href: "/", icon: <EventIcon /> },
+  { text: "Charts", href: "/", icon: <InsertChartIcon /> },
+  { text: "Documents", href: "/", icon: <DescriptionIcon /> },
+];
 
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+const Navbar = () => {
+  const router = useRouter();
+  const [value, setValue] = useState(0);
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
+  // Sync active tab with current route
+  useEffect(() => {
+    const currentIndex = menuItems.findIndex((item) => item.href === router.pathname);
+    setValue(currentIndex === -1 ? 0 : currentIndex);
+  }, [router.pathname]);
+
+  const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const toggleDrawer = (open) => () => {
+    setDrawerOpen(open);
   };
 
   return (
     <AppBar position="static" sx={{ backgroundColor: primaryColor, boxShadow: "none" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        {/* Logo on the left */}
         <Box
           component="img"
           src="/images/logo.png"
           alt="Career Cruise Consulting ME logo white"
-          sx={{
-            width: "80px",
-            height: "auto",
-            marginTop: "10px",
-            marginRight: "20px",
-            borderRadius: "7px",
-          }}
+          sx={{ width: "80px", height: "auto", marginTop: "10px", borderRadius: "5px" }}
         />
-
-        {/* Menu on the right */}
-        <div className="nav_menu">
+        {isMobile ? (
+          <>
+            <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </IconButton>
+            <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+              <List>
+                {menuItems.map((item, index) => (
+                  <ListItem key={index} component={Link} href={item.href} onClick={toggleDrawer(false)}>
+                    <ListItemIcon>{item.icon}</ListItemIcon>
+                    <ListItemText primary={item.text} />
+                  </ListItem>
+                ))}
+              </List>
+            </Drawer>
+          </>
+        ) : (
           <Tabs
             value={value}
             onChange={handleChange}
             textColor="inherit"
-            TabIndicatorProps={{ style: { display: "none" } }} // Hide default indicator
+            TabIndicatorProps={{ style: { display: "none" } }}
             sx={{
               "& .MuiTab-root": {
-                color: "rgba(255, 255, 255, 0.7)", // Default tab color
+                color: "rgba(255, 255, 255, 0.7)",
                 textTransform: "none",
                 fontWeight: 500,
                 padding: "6px 12px",
@@ -58,17 +265,15 @@ const Navbar = () => {
               },
             }}
           >
-            <Tab component={Link} href="/" icon={<DashboardIcon />} label="Home" />
-            <Tab component={Link} href="/About" icon={<ContactsIcon />} label="About" />
-            <Tab component={Link} href="/Services" icon={<LayersIcon />} label="Apply" />
-            <Tab component={Link} href="/calendar" icon={<EventIcon />} label="Calendar" />
-            <Tab component={Link} href="/charts" icon={<InsertChartIcon />} label="Charts" />
-            <Tab component={Link} href="/documents" icon={<DescriptionIcon />} label="Documents" />
+            {menuItems.map((item, index) => (
+              <Tab key={index} component={Link} href={item.href} icon={item.icon} label={item.text} />
+            ))}
           </Tabs>
-        </div>
+        )}
       </Toolbar>
     </AppBar>
   );
 };
 
 export default Navbar;
+

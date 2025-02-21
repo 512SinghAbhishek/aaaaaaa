@@ -24,25 +24,32 @@ import Navbar from "../../components/Layout/Navbar";
 
 
 const drawerWidth = 240;
-const primaryColor = "#0a5578";
-const secondaryColor = "#FFFFFF";
+const primaryColor = "#008acb";
+const secondaryColor = "#000000";
 
 const roles = [
-    "Brand Ambassador",
-    "Cashier / Ticketing",
-    "Event Producer",
-    "Event Coordinator",
-    "Guest Management Specialist",
-    "Host & Hostess",
-    "Logistics Coordinator",
-    "Model",
-    "Operation Manager",
-    "Promoter",
+    "Software Developer",
+    "Web Developer",
+    "IT Support Engineer",
+    "Cybersecurity Analyst",
+    "Data Scientist",
+    "Cloud Engineer",
+    "AI/ML Engineer",
+    "DevOps Engineer",
     "Project Manager",
     "Production Manager",
-    "Retail Sales Support",
-    "RSVP Manager",
-    "Registration Staff",
+    "Network Administrator",
+    "Database Administrator",
+    "Customer Support Representative",
+    "Technical Support Executive",
+    "Call Center Agent",
+    "Chat Support Specialist",
+    "Voice Process Associate",
+    "Non-Voice Process Executive",
+    "Telecaller",
+    "Back Office Executive",
+    "Quality Analyst (BPO)",
+    "Process Trainer"
 ];
 
 
@@ -70,18 +77,7 @@ const features = [
 ];
 
 const index = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(true);
-
-    // Toggle Sidebar
-    const handleToggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
-    };
-    const menuItems = [
-        { text: "Home", route: "/" },
-        { text: "About Us", route: "/About" },
-        { text: "Services", route: "/Services" },
-        { text: "Contact", route: "/contact" },
-    ];
+  
     return (
         <>
             {/* <Box
@@ -127,31 +123,28 @@ const index = () => {
                         component="h2"
                         sx={{
                             fontWeight: "bold",
-                            color: "#333",
+                            color: "#ffffff",
                             animation: "fadeInUp 1s",
                             marginTop: "60px",
                             textAlign: "center"
                         }}
                     >
-                        About <span style={{ color: "#0a5578" }}>Career Cruise Consulting.</span> - The Event
+                        About <span style={{ color: "#008acb" }}>Career Cruise Consulting.</span> - The
                         Staffing Agency Delhi NCR
                     </Typography>
                     <Typography
                         variant="body1"
                         sx={{
                             marginTop: 2,
-                            color: "#666",
+                            color: "#ffffff",
                             animation: "fadeIn 1s",
                         }}
                     >
-                        With over a decade of experience, Career Cruise Consulting, an event staffing agency in
-                        Delhi NCR, specializes in understanding your unique needs and providing
-                        tailored solutions whenever event staff is required, ensuring your
-                        events run smoothly.
+                       With over a decade of experience, Career Cruise Consulting, a staffing agency in Delhi NCR, specializes in understanding your unique hiring needs and providing tailored solutions for BPO and IT recruitment, ensuring you get the right talent to drive your business forward.
                     </Typography>
                     <Button
                         variant="outlined"
-                        href="#contact"
+                        href="/Services"
                         sx={{
                             marginTop: 3,
                             borderColor: "#18A0C3",
@@ -171,7 +164,7 @@ const index = () => {
                 <Box sx={{ padding: "0px 0px 70px 0", textAlign: "center" }}>
 
 
-                    <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: "30px", textAlign: "center" }}>
+                    <Typography variant="h4" fontWeight="bold" sx={{ marginBottom: "30px", textAlign: "center",color:"#ffffff" }}>
                         Why Work with <span style={{ color: primaryColor }}>Career Cruise Consulting?</span>
                     </Typography>
 
@@ -188,10 +181,10 @@ const index = () => {
                                     }}
                                 >
                                     {feature.icon}
-                                    <Typography variant="h6" fontWeight="bold" sx={{ marginTop: "15px" }}>
+                                    <Typography variant="h6" fontWeight="bold" sx={{ marginTop: "15px" ,color:"#ffffff" }}>
                                         {feature.title}
                                     </Typography>
-                                    <Typography variant="body2" sx={{ marginTop: "10px" }}>
+                                    <Typography variant="body2" sx={{ marginTop: "10px", color:"#ffffff" }}>
                                         {feature.description}
                                     </Typography>
                                 </Box>
@@ -212,22 +205,22 @@ const index = () => {
                                 color: secondaryColor,
                             },
                         }}
-                        href="#contact"
+                        href="/"
                     >
                         Request a Consultation
                     </Button>
 
                 </Box>
 
-                <Typography variant="h4" component="h2" sx={{ textAlign: "center" }} gutterBottom>
+                <Typography variant="h4" component="h2" sx={{ textAlign: "center",color:"#ffffff" }} gutterBottom>
                     We got you <strong style={{ color: primaryColor }}>covered.</strong>
                 </Typography>
 
                 <Grid item xs={12} container spacing={2}>
                     <Grid item xs={12} md={9} sx={{ paddingRight: "20px" }}>
-                        <Typography variant="body1" paragraph>
+                        <Typography variant="body1" paragraph style={{color:"#ffffff"}}>
                             Freelancers of the highest caliber to support various roles for your event
-                            through our event staffing agency in Delhi NCR. Whether you need <strong style={{ color: primaryColor }}>pre-event
+                            through our Hiring agency in Delhi NCR. Whether you need <strong style={{ color: primaryColor }}>pre-event
                                 support, hostesses in Delhi NCR, or on-site personnel during the live phase</strong>,
                             we ensure a flawless experience from beginning to end.
                         </Typography>
@@ -242,7 +235,7 @@ const index = () => {
                                                     <ListItemIcon style={{ minWidth: "29px" }}>
                                                         <CheckCircleIcon style={{ maxWidth: "42px" }} color="primary" />
                                                     </ListItemIcon>
-                                                    <ListItemText primary={role} />
+                                                    <ListItemText style={{color:"#ffffff"}} primary={role} />
                                                 </ListItem>
                                             </Grid>
                                         ))}
@@ -253,7 +246,7 @@ const index = () => {
 
 
                     </Grid>
-                    <Grid item xs={12} sx={{ backgroundImage: 'url("/images/first.jpg")' }} md={3}>
+                    <Grid item xs={12} sx={{ backgroundImage: 'url("/images/UK-Recruitment-Agencies.jpg")' }} md={3}>
 
                     </Grid>
                 </Grid>

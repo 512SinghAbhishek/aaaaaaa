@@ -34,7 +34,7 @@ const Footer = () => {
                width: "150px",
                height: "auto",
                marginTop: "10px",
-               borderRadius:"25px"
+               borderRadius:"10px"
             }}
          />
       </Box>

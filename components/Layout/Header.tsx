@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  AppBar,
   Toolbar,
   Typography,
   List,
@@ -13,7 +12,8 @@ import {
   Box,
   Button,
   ListItemIcon,
-  IconButton, Card, CardContent, Avatar, Grid
+  IconButton, Card, CardContent, Avatar, Grid,
+  useMediaQuery
 } from "@mui/material";
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@mui/lab";
 import EmailIcon from "@mui/icons-material/Email";
@@ -29,75 +29,102 @@ import "swiper/css";
 import "swiper/css/pagination";
 import axios from "axios";
 
-import MenuIcon from "@mui/icons-material/Menu";
 import Navbar from "./Navbar";
 
 const drawerWidth = 240;
-const primaryColor = "#0a5578";
-const secondaryColor = "#FFFFFF";
-
+const primaryColor = " #008acb";
+const secondaryColor = "#000000";
+// #0a5578
 const roadmapData = [
   {
-    year: "2016",
-    title: "STARTING UP",
+    year: "Step 1",
+    title: "Graduation",
     color: "#74AF27",
+    image: "graduation.png",
     description: [
-      "Research on aviation market",
-      "Research on cryptocurrency",
-      "Research on traditional online payment system & alternative payment solution"
+      "Complete your degree or relevant certification in IT/BPO-related fields.",
+      "Enhance skills with online courses or internships.",
+      "Build a strong resume and LinkedIn profile."
     ]
   },
   {
-    year: "2017 Q2",
-    title: "OPENING NEW BUSINESS",
+    year: "Step 2",
+    title: "Apply on Hiring Platforms",
     color: "#0288D1",
+    image: "job_portal.png",
     description: [
-      "Finish necessarily legal procedure to enable operations"
+      "Register on job portals like LinkedIn, Naukri, Indeed, etc.",
+      "Apply for relevant job openings in IT and BPO sectors.",
+      "Customize your resume and cover letter for each application."
     ]
   },
   {
-    year: "2017 Q1",
-    title: "BUILDING UP AND GETTING REAL EXPERIENCES",
+    year: "Step 3",
+    title: "Application Accepted",
     color: "#880E4F",
+    image: "application_accepted.png",
     description: [
-      "Integrate Bitair payment solution into real business network regarding booking airline ticket (trial version) to conduct research",
-      "Make survey of user's experiences & choices",
-      "Approach airlines, travel & tourism"
+      "Receive confirmation from recruiters.",
+      "Prepare for online assessments or technical screenings.",
+      "Research about the company and role."
     ]
   },
   {
-    year: "2017 Q2",
-    title: "OPENING NEW BUSINESS",
-    color: "#0288D1",
+    year: "Step 4",
+    title: "Interview Call",
+    color: "#F57C00",
+    image: "interview_call.png",
     description: [
-      "Finish necessarily legal procedure to enable operations"
+      "Schedule interviews as per the company's process.",
+      "Practice common IT/BPO interview questions.",
+      "Prepare for HR and technical rounds."
     ]
   },
   {
-    year: "2017 Q1",
-    title: "BUILDING UP AND GETTING REAL EXPERIENCES",
-    color: "#880E4F",
+    year: "Step 5",
+    title: "Interview Rounds",
+    color: "#7B1FA2",
+    image: "interview_round.png",
     description: [
-      "Integrate Bitair payment solution into real business network regarding booking airline ticket (trial version) to conduct research",
-      "Make survey of user's experiences & choices",
-      "Approach airlines, travel & tourism"
+      "Attend technical and HR interviews.",
+      "Demonstrate problem-solving and communication skills.",
+      "Negotiate salary and job role if required."
     ]
   },
-
+  {
+    year: "Step 6",
+    title: "Documentation Process",
+    color: "#388E3C",
+    image: "documentation.png",
+    description: [
+      "Submit required documents like ID proof, education certificates, and experience letters.",
+      "Complete background verification if applicable.",
+      "Receive an official job offer letter."
+    ]
+  },
+  {
+    year: "Step 7",
+    title: "Selection & Company Onboarding",
+    color: "#D32F2F",
+    image: "onboarding.png",
+    description: [
+      "Accept the job offer and sign the contract.",
+      "Attend onboarding sessions and training programs.",
+      "Get assigned to a team and start your professional journey."
+    ]
+  }
 ];
 
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
-  const handleToggleSidebar = () => {
-    setSidebarOpen(!sidebarOpen);
-  };
+
   const items = [
-    { type: "image", src: "/images/interview.jpg" },
-    { type: "image", src: "/images/Job.webp" },
-    { type: "image", src: "/images/Job.webp" },
-    { type: "image", src: "/images/1723224215434.png" }
+    { type: "image", src: "/images/build recruitment business.jpeg" },
+    { type: "image", src: "/images/employment-recruitment-business-company-office-260nw-1757603684.webp" },
+    { type: "image", src: "/images/how-to-choose-a-recruiting-agency.webp" },
+    { type: "image", src: "/images/job-candidate-selection-process-260nw-331128260.webp" }
   ];
 
   const testimonials = [
@@ -105,32 +132,26 @@ const Header = () => {
       name: "Ahmed Khalid",
       role: "CEO of Horizon Technologies",
       quote:
-        "Working with Career Cruise Consulting was an absolute game-changer for our business. Their tailor-made approach allowed us to complete our project on time, with a level of customization that exceeded our expectations.",
+        "Partnering with Ahmed Khalid has transformed our customer support operations. Their 24/7 multilingual assistance and AI-driven chatbots have significantly improved response times and customer satisfaction. Their ability to scale with our business needs has been a game-changer",
     },
     {
       name: "Fatima Al Mansoori",
       role: "Operations Director at Gulf Innovations",
       quote:
-        "Career Cruise Consulting helped us execute a complex project with flawless precision. Their deep understanding of the Middle Eastern market, combined with their expertise in creating tailor-made solutions, made them the perfect partner for our expansion.",
+        "We needed a reliable IT partner to streamline our cloud migration and cybersecurity processes. The expertise and proactive approach of Fatima Al Mansoori have not only enhanced our IT infrastructure but also ensured data security and compliance. Their customized solutions have given us a competitive edge in the market.",
     },
     {
       name: "Sultan Bin Zayed",
       role: "Founder of Zenith Construction",
       quote:
-        "The team at Career Cruise Consulting went above and beyond to ensure our project aligned perfectly with our vision. Their Delhi NCR-based expertise, paired with their attention to detail, gave us confidence from day one.",
+        "Outsourcing our back-office operations to Sultan Bin Zayed has reduced our operational costs by 40% while increasing process accuracy. Their use of RPA (Robotic Process Automation) and AI analytics has optimized our workflow, allowing us to focus on business growth",
     },
     {
       name: "Laila Abbas",
       role: "Managing Director at Al Noor Enterprises",
       quote:
-        "Career Cruise Consulting provided exceptional service and innovative solutions tailored to our needs. Their understanding of the regional landscape in the Middle East was clear in every aspect of their work.",
+        "From IT helpdesk support to cloud-based solutions,Laila Abbas has been instrumental in ensuring smooth IT operations across our global offices. Their team is highly responsive and committed to delivering innovative solutions that align with our digital strategy",
     },
-  ];
-  const menuItems = [
-    { text: "Home", route: "/" },
-    { text: "About Us", route: "/About" },
-    { text: "Services", route: "/Services" },
-    { text: "Contact", route: "/contact_us" },
   ];
 
   const CounterCard = ({ title, target }) => {
@@ -155,7 +176,7 @@ const Header = () => {
     }, [target]);
 
     return (
-      <Card sx={{ backgroundColor: primaryColor, color: secondaryColor, textAlign: "center", padding: 2, minWidth: 200 }}>
+      <Card sx={{ backgroundColor: primaryColor, color: "#ffffff", textAlign: "center", padding: 2, minWidth: 200 }}>
         <CardContent>
           <Typography variant="h5" component="div">
             {count}
@@ -190,6 +211,9 @@ const Header = () => {
       alert("Error: " + error.response?.data?.error || "Something went wrong");
     }
   };
+
+  const isMobile = useMediaQuery("(max-width:600px)");
+  const isTablet = useMediaQuery("(max-width:900px)");
 
   const FlipBox = ({ icon, title, description }) => {
     return (
@@ -230,31 +254,6 @@ const Header = () => {
     <>
       <Box sx={{ display: "flex" }}>
 
-        {/* Sidebar (Not Drawer) */}
-        {/* <Box
-          sx={{
-            width: sidebarOpen ? drawerWidth : 0,
-            overflow: "hidden",
-            transition: "width 0.3s ease-in-out",
-            backgroundColor: primaryColor,
-            color: secondaryColor,
-            height: "100%",
-            position: "fixed",
-            left: 0,
-            top: 0,
-            paddingTop: "64px", // To avoid overlap with AppBar
-          }}
-        >
-          <List>
-            {menuItems.map(({ text, route }) => (
-              <ListItem key={text} component={Link} href={route}>
-                <ListItemText sx={{ color: "#fff" }} primary={text} />
-              </ListItem>
-            ))}
-          </List>
-        </Box> */}
-
-        {/* Main Content */}
         <Box
           component="main"
           sx={{
@@ -267,40 +266,17 @@ const Header = () => {
             width: `calc(100% - ${sidebarOpen ? drawerWidth : 0}px)`,
           }}
         >
-         
-          {/* Top Navbar */}
-          {/* <AppBar position="fixed" sx={{ width: "100%", backgroundColor: primaryColor }}>
-            <Toolbar>
-              
-              <IconButton edge="start" color="inherit" onClick={handleToggleSidebar} sx={{ mr: 2 }}>
-                <MenuIcon />
-              </IconButton>
-              <Box
-                component="img"
-                src="/images/logo.png"
-                alt="Career Cruise Consulting ME logo white"
-                sx={{
-                  width: "80px",
-                  height: "auto",
-                  marginTop: "10px",
-                  marginRight: "20px",
-                  borderRadius: "7px"
-                }}
-              />
-              
-            </Toolbar>
-          </AppBar> */}
 
-          {/* <Toolbar /> */}
           <Navbar />
-
-          <Box className="Head" sx={{ backgroundImage: 'url("/images/1723224215434.png")', height: "500px" }}>
-            <Container maxWidth="md" sx={{ padding: "100px 0" }}>
-              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Transform Your <span style={{ color: primaryColor }}>Events</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire a Hostess Agency in Delhi NCR
+          {/* sx={{ backgroundImage: 'url("/images/r1.jpg")' }} */}
+          {/* <Box className="Head" >
+            
+            <Container maxWidth="md" sx={{ padding: "40px 0" }}>
+              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: "#ffffff" }}>
+                Enhance Your <span style={{ color: primaryColor }}>Operations</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled Professionals for BPO & IT Services in Delhi NCR
               </Typography>
-              <Typography variant="body1" paragraph>
-                Discover how our hostess agency in Delhi NCR connects you with top talent, helping you hire hostesses for events and ensuring success in every project.
+              <Typography variant="body1" paragraph style={{ color: "#ffffff" }}>
+                Discover how our BPO & IT staffing agency in Noida connects you with top talent, helping you hire skilled professionals for customer support, technical assistance, and IT projects to ensure success in every endeavor.
               </Typography>
               <Button
                 variant="outlined"
@@ -317,51 +293,127 @@ const Header = () => {
                 Get Started Today!
               </Button>
             </Container>
+          </Box> */}
+
+          <Box sx={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
+            {/* Background Video */}
+          
+
+            {/* Content */}
+            <Box
+              className="Head"
+              sx={{
+                position: "relative",
+                zIndex: 1,
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                height: "100%",
+                textAlign: "center",
+                // backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional overlay for better readability
+              }}
+            >
+                <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              onError={(e) => console.error("Video failed to load", e)}
+              style={{
+                position: "absolute",
+                top: "0",
+                left: "0",
+                width: "100%",
+                height: "90%",
+                objectFit: "cover",
+                zIndex: "-1",
+              }}
+            >
+              <source src="/images/Auto_Video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+              <Container maxWidth="md" sx={{ padding: "40px 0" }}>
+                <Typography
+                  variant="h3"
+                  component="h1"
+                  gutterBottom
+                  sx={{ fontWeight: "bold", color: "#000000" }}
+                >
+                  Enhance Your{" "}
+                  <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}
+                  <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled
+                  Professionals for BPO & IT Services in Delhi NCR
+                </Typography>
+                <Typography variant="body1" paragraph sx={{ color: "#000000" }}>
+                  Discover how our BPO & IT staffing agency in Noida connects you with top talent,
+                  helping you hire skilled professionals for customer support, technical assistance,
+                  and IT projects to ensure success in every endeavor.
+                </Typography>
+                <Button
+                  variant="outlined"
+                  sx={{
+                    mt: 2,
+                    borderColor: primaryColor,
+                    color: primaryColor,
+                    "&:hover": {
+                      backgroundColor: primaryColor,
+                      color: secondaryColor,
+                    },
+                  }}
+                >
+                  Get Started Today!
+                </Button>
+              </Container>
+            </Box>
           </Box>
 
 
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
-              Event Staffing Services in Delhi NCR
+              Staffing Services in Delhi NCR
             </Typography>
-            <Typography variant="body1" sx={{ mt: 2 }}>
-              ✔ Temporary Event Staffing: Skilled personnel for front and back of house, sourced through our trusted event staffing agency.
+            <Typography variant="body1" sx={{ mt: 2, color: "#ffffff" }}>
+              ✔ Temporary Staffing: Skilled personnel for front and back office operations, sourced through our trusted staffing agency.
             </Typography>
-            <Typography variant="body1" sx={{ mt: 1 }}>
-              ✔ End-to-End Event Management: From sourcing to execution, our Delhi NCR-based agency covers every detail.
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ End-to-End Management: From sourcing to execution, our Noida-based agency covers every detail.
             </Typography>
-            <Typography variant="body1" sx={{ mt: 1 }}>
-              ✔ Freelancer Hostess Selection: Access a curated pool of vetted hostesses perfect for any event.
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ Freelancer Selection: Access a curated pool of vetted professionals perfect for any requirement.
             </Typography>
 
           </Box>
+
+
+
+
 
           <Box sx={{ bgcolor: secondaryColor, color: "black", p: 4 }}>
             <Grid container spacing={4} alignItems="center">
               {/* Text Section */}
               <Grid item xs={12} md={6}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: primaryColor }}>
-                  Comprehensive <span style={{ fontWeight: "bold" }}>Event Staffing Services</span> in Delhi NCR
+                  Comprehensive <span style={{ fontWeight: "bold" }}>BPO and IT Staffing Services</span> in Delhi NCR
                 </Typography>
 
                 <List>
                   {[
                     {
-                      text: "Skilled personnel for front and back of house, sourced through our trusted event staffing agency.",
+                      text: "Skilled professionals for front-office and back-office operations, sourced through our trusted staffing agency.",
                     },
                     {
-                      text: "From sourcing to execution, our Delhi NCR-based event staffing agency covers every detail.",
+                      text: "From talent acquisition to seamless execution, our Noida-based staffing agency handles every detail.",
                     },
                     {
-                      text: "Access a curated pool of vetted hostesses in Delhi NCR, perfect to hire for any event.",
+                      text: "Access a curated pool of vetted professionals in Noida, ideal for customer support, IT services, and business operations.",
                     },
                   ].map((item, index) => (
                     <ListItem key={index}>
                       <ListItemIcon>
                         <CheckCircleIcon sx={{ color: primaryColor }} />
                       </ListItemIcon>
-                      <Typography variant="body1">
+                      <Typography variant="body1" sx={{ color: "#ffffff" }}>
                         <strong>{item.text}</strong>
                       </Typography>
                     </ListItem>
@@ -395,6 +447,7 @@ const Header = () => {
                           width: "100%",
                           height: "100%",
                           objectFit: "cover",
+                          color: "#ffffff",
                           transition: "transform 0.3s ease-in-out",
                           '&:hover': {
                             transform: "scale(1.1)",
@@ -416,7 +469,7 @@ const Header = () => {
               What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
             </Typography>
 
-            <Swiper
+            {/* <Swiper
               modules={[Pagination, Autoplay]}
               slidesPerView={3}
               spaceBetween={30}
@@ -444,8 +497,72 @@ const Header = () => {
                   </Card>
                 </SwiperSlide>
               ))}
+            </Swiper> */}
+            <Swiper
+              modules={[Pagination, Autoplay]}
+              slidesPerView={isMobile ? 1 : isTablet ? 2 : 3}
+              spaceBetween={isMobile ? 10 : 30}
+              autoplay={{ delay: 3000 }}
+              pagination={{ clickable: true }}
+              style={{ padding: "20px", maxWidth: "90%", margin: "auto" }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <SwiperSlide key={index}>
+                  <Card
+                    sx={{
+                      backgroundColor: secondaryColor,
+                      color: "#ffffff",
+                      borderRadius: "10px",
+                      height: "500px",
+                      boxShadow: 3,
+                    }}
+                  >
+                    <CardContent>
+                      <Typography variant="h6" fontStyle="italic">
+                        “{testimonial.quote}”
+                      </Typography>
+                      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
+                        <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
+                        <Typography variant="subtitle1" fontWeight="bold">
+                          {testimonial.name}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {testimonial.role}
+                        </Typography>
+                      </Box>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
             </Swiper>
           </Box>
+
+
+
+          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+            <Toolbar />
+            <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold", textAlign: "center" }}>
+              Who We Are ?
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 2, color: "#ffffff" }}>
+              At <span style={{ color: primaryColor, fontWeight: "bold" }}>Career Cruise Consulting</span>, we are a leading IT and BPO solutions provider, committed to delivering cutting-edge technology and business process outsourcing services. With a passion for innovation and excellence, we empower businesses worldwide by optimizing operations, enhancing customer experiences, and driving digital transformation.
+            </Typography>
+            <br />
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}> IT Solutions –</span>From software development and cloud computing to cybersecurity and AI-driven solutions, we offer end-to-end IT services that drive growth and efficiency.
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>BPO Services – </span> Our business process outsourcing solutions, including customer support, back-office operations, data management, and HR outsourcing, ensure seamless business functions with top-tier quality and efficiency.
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>Digital Transformation –</span>We help businesses transition into the digital age with automation, AI, and customized tech solutions that streamline workflows and improve productivity.
+            </Typography>
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>Customer-Centric Approach – </span>Our focus is on delivering exceptional customer experiences through AI-powered chat support, multilingual call centers, and personalized service models.
+            </Typography>
+
+          </Box>
+
 
           {/* <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
@@ -481,14 +598,14 @@ const Header = () => {
 
           <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-            Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
+              Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
             </Typography>
             <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2}>
 
               <FlipBox
                 icon={<BusinessIcon fontSize="large" color="primary" />}
-                title="Visa Outsourcing"
-                description="Navigate Visa Complexities with Seamless Solutions Backed by Proven Expertise."
+                title="Contractual Hiring"
+                description=" IT sector, contractual hiring is crucial for project-based work, software development, cybersecurity, and cloud computing. "
               />
               <FlipBox
                 icon={<CalendarTodayIcon fontSize="large" color="primary" />}
@@ -500,24 +617,34 @@ const Header = () => {
                 title="HR Outsourcing"
                 description="Our dynamic HR outsourcing solutions are crafted to simplify workforce management."
               />
+
+              <FlipBox
+                icon={<GroupIcon fontSize="large" color="primary" />}
+                title="Part Time Outsourcing"
+                description="Part-Time outsourcing has become a game-changer for businesses in both the BPO (Business Process Outsourcing) and IT sectors. "
+              />
             </Box>
           </Box>
           <Box sx={{ margin: "20px 0 50px 0" }}>
-          <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-             <span style={{ color: primaryColor }}>Roadmap</span>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
+              <span style={{ color: primaryColor }}>Roadmap</span>
             </Typography>
             <Timeline sx={{ padding: 3 }}>
               {roadmapData.map((item, index) => (
                 <TimelineItem key={index}>
                   {index % 2 === 0 ? (
                     <>
-                      <TimelineContent >
+                      <TimelineContent>
                         <Box display="inline-block" maxWidth={400}>
-                          <Card sx={{ backgroundColor: item.color, color: secondaryColor, marginTop: 1 }}>
+                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1 }}>
                             <CardContent>
-                              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>{item.title}</Typography>
+                              <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                                {item.title}
+                              </Typography>
                               {item.description.map((desc, i) => (
-                                <Typography key={i} variant="body2" sx={{ marginTop: 1 }}>{desc}</Typography>
+                                <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
+                                  {desc}
+                                </Typography>
                               ))}
                             </CardContent>
                           </Card>
@@ -538,11 +665,15 @@ const Header = () => {
                       </TimelineSeparator>
                       <TimelineContent>
                         <Box display="inline-block" maxWidth={400}>
-                          <Card sx={{ backgroundColor: item.color, color: secondaryColor, marginTop: 1 }}>
+                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1 }}>
                             <CardContent>
-                              <Typography variant="subtitle1" sx={{ fontWeight: "bold" }}>{item.title}</Typography>
+                              <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                                {item.title}
+                              </Typography>
                               {item.description.map((desc, i) => (
-                                <Typography key={i} variant="body2" sx={{ marginTop: 1 }}>{desc}</Typography>
+                                <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
+                                  {desc}
+                                </Typography>
                               ))}
                             </CardContent>
                           </Card>
@@ -553,27 +684,28 @@ const Header = () => {
                 </TimelineItem>
               ))}
             </Timeline>
-          </Box>
 
-          <Box sx={{ backgroundImage: 'url("/images/interview.jpg")', padding: "50px 10px" }}>
-          
+          </Box>
+          {/* backgroundImage: 'url("/images/interview.jpg")', */}
+          <Box sx={{ padding: "50px 10px" }}>
+
             <Grid container spacing={4} alignItems="center">
               {/* Left Section - Contact Info */}
               <Grid item xs={12} md={6}>
                 <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
-                  <Typography variant="h4" fontWeight="bold">
+                  <Typography variant="h4" fontWeight="bold" style={{ color: "#ffffff" }}>
                     Contact <span style={{ fontWeight: "lighter" }}>Information</span>
                   </Typography>
                   <Box display="flex" alignItems="center" mt={2}>
                     <EmailIcon sx={{ mr: 1 }} />
-                    <Typography variant="body1">
-                      <strong>Email:</strong> <a href="mailto:humans@Career Cruise Consulting-me.com" style={{ color: secondaryColor }}>humans@Career Cruise Consulting-me.com</a>
+                    <Typography variant="body1" style={{ color: "#ffffff" }}>
+                      <strong>Email:</strong> <a href="mailto:humans@Career Cruise Consulting-me.com" style={{ color: "#ffffff" }}>humans@Career Cruise Consulting-me.com</a>
                     </Typography>
                   </Box>
                   <Box display="flex" alignItems="center" mt={2}>
                     <LocationOnIcon sx={{ mr: 1 }} />
-                    <Typography variant="body1">
-                      <strong>Address:</strong> Office Bldg, Office 307 0136, Delhi NCR Investment Park, Delhi NCR
+                    <Typography variant="body1" style={{ color: "#ffffff" }}>
+                      <strong>Address:</strong> Office Bldg, Office 307 0136, Noida Investment Park, Noida
                     </Typography>
                   </Box>
                 </Paper>
