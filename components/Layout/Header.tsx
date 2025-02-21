@@ -324,8 +324,8 @@ const Header = () => {
                 top: "0",
                 left: "0",
                 width: "100%",
-                height: "90%",
-                objectFit: "cover",
+                height: "100%",
+                objectFit: "fill",
                 zIndex: "-1",
               }}
             >
@@ -629,7 +629,7 @@ const Header = () => {
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               <span style={{ color: primaryColor }}>Roadmap</span>
             </Typography>
-            <Timeline sx={{ padding: 3 }}>
+            {/* <Timeline sx={{ padding: 3 }}>
               {roadmapData.map((item, index) => (
                 <TimelineItem key={index}>
                   {index % 2 === 0 ? (
@@ -683,7 +683,62 @@ const Header = () => {
                   )}
                 </TimelineItem>
               ))}
-            </Timeline>
+            </Timeline> */}
+<Timeline sx={{ padding: 3 }}>
+  {roadmapData.map((item, index) => (
+    <TimelineItem key={index} sx={{ flexDirection: { xs: "column", md: "row" } }}>
+      {index % 2 === 0 ? (
+        <>
+          <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+            <Box display="block" maxWidth="100%" width="100%">
+              <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
+                <CardContent>
+                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                    {item.title}
+                  </Typography>
+                  {item.description.map((desc, i) => (
+                    <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
+                      {desc}
+                    </Typography>
+                  ))}
+                </CardContent>
+              </Card>
+            </Box>
+          </TimelineContent>
+          <TimelineSeparator>
+            <TimelineDot sx={{ backgroundColor: item.color }} />
+            {index !== roadmapData.length - 1 && <TimelineConnector />}
+          </TimelineSeparator>
+          <TimelineContent></TimelineContent>
+        </>
+      ) : (
+        <>
+          <TimelineContent></TimelineContent>
+          <TimelineSeparator>
+            <TimelineDot sx={{ backgroundColor: item.color }} />
+            {index !== roadmapData.length - 1 && <TimelineConnector />}
+          </TimelineSeparator>
+          <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+            <Box display="block" maxWidth="100%" width="100%">
+              <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
+                <CardContent>
+                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
+                    {item.title}
+                  </Typography>
+                  {item.description.map((desc, i) => (
+                    <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
+                      {desc}
+                    </Typography>
+                  ))}
+                </CardContent>
+              </Card>
+            </Box>
+          </TimelineContent>
+        </>
+      )}
+    </TimelineItem>
+  ))}
+</Timeline>
 
           </Box>
           {/* backgroundImage: 'url("/images/interview.jpg")', */}
