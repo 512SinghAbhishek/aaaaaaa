@@ -134,7 +134,7 @@ const index = () => {
                         }}
                     >
                         About <span style={{ color: "#0a5578" }}>Career Cruise Consulting.</span> - The Event
-                        Staffing Agency Dubai
+                        Staffing Agency Delhi NCR
                     </Typography>
                     <Typography
                         variant="body1"
@@ -145,7 +145,7 @@ const index = () => {
                         }}
                     >
                         With over a decade of experience, Career Cruise Consulting, an event staffing agency in
-                        Dubai, specializes in understanding your unique needs and providing
+                        Delhi NCR, specializes in understanding your unique needs and providing
                         tailored solutions whenever event staff is required, ensuring your
                         events run smoothly.
                     </Typography>
@@ -227,8 +227,8 @@ const index = () => {
                     <Grid item xs={12} md={9} sx={{ paddingRight: "20px" }}>
                         <Typography variant="body1" paragraph>
                             Freelancers of the highest caliber to support various roles for your event
-                            through our event staffing agency in Dubai. Whether you need <strong style={{ color: primaryColor }}>pre-event
-                                support, hostesses in Dubai, or on-site personnel during the live phase</strong>,
+                            through our event staffing agency in Delhi NCR. Whether you need <strong style={{ color: primaryColor }}>pre-event
+                                support, hostesses in Delhi NCR, or on-site personnel during the live phase</strong>,
                             we ensure a flawless experience from beginning to end.
                         </Typography>
 

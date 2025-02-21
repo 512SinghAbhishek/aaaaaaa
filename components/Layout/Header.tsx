@@ -117,7 +117,7 @@ const Header = () => {
       name: "Sultan Bin Zayed",
       role: "Founder of Zenith Construction",
       quote:
-        "The team at Career Cruise Consulting went above and beyond to ensure our project aligned perfectly with our vision. Their Dubai-based expertise, paired with their attention to detail, gave us confidence from day one.",
+        "The team at Career Cruise Consulting went above and beyond to ensure our project aligned perfectly with our vision. Their Delhi NCR-based expertise, paired with their attention to detail, gave us confidence from day one.",
     },
     {
       name: "Laila Abbas",
@@ -297,10 +297,10 @@ const Header = () => {
           <Box className="Head" sx={{ backgroundImage: 'url("/images/1723224215434.png")', height: "500px" }}>
             <Container maxWidth="md" sx={{ padding: "100px 0" }}>
               <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold' }}>
-                Transform Your <span style={{ color: primaryColor }}>Events</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire a Hostess Agency in Dubai
+                Transform Your <span style={{ color: primaryColor }}>Events</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire a Hostess Agency in Delhi NCR
               </Typography>
               <Typography variant="body1" paragraph>
-                Discover how our hostess agency in Dubai connects you with top talent, helping you hire hostesses for events and ensuring success in every project.
+                Discover how our hostess agency in Delhi NCR connects you with top talent, helping you hire hostesses for events and ensuring success in every project.
               </Typography>
               <Button
                 variant="outlined"
@@ -323,13 +323,13 @@ const Header = () => {
           <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
-              Event Staffing Services in Dubai
+              Event Staffing Services in Delhi NCR
             </Typography>
             <Typography variant="body1" sx={{ mt: 2 }}>
               ✔ Temporary Event Staffing: Skilled personnel for front and back of house, sourced through our trusted event staffing agency.
             </Typography>
             <Typography variant="body1" sx={{ mt: 1 }}>
-              ✔ End-to-End Event Management: From sourcing to execution, our Dubai-based agency covers every detail.
+              ✔ End-to-End Event Management: From sourcing to execution, our Delhi NCR-based agency covers every detail.
             </Typography>
             <Typography variant="body1" sx={{ mt: 1 }}>
               ✔ Freelancer Hostess Selection: Access a curated pool of vetted hostesses perfect for any event.
@@ -342,7 +342,7 @@ const Header = () => {
               {/* Text Section */}
               <Grid item xs={12} md={6}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: primaryColor }}>
-                  Comprehensive <span style={{ fontWeight: "bold" }}>Event Staffing Services</span> in Dubai
+                  Comprehensive <span style={{ fontWeight: "bold" }}>Event Staffing Services</span> in Delhi NCR
                 </Typography>
 
                 <List>
@@ -351,10 +351,10 @@ const Header = () => {
                       text: "Skilled personnel for front and back of house, sourced through our trusted event staffing agency.",
                     },
                     {
-                      text: "From sourcing to execution, our Dubai-based event staffing agency covers every detail.",
+                      text: "From sourcing to execution, our Delhi NCR-based event staffing agency covers every detail.",
                     },
                     {
-                      text: "Access a curated pool of vetted hostesses in Dubai, perfect to hire for any event.",
+                      text: "Access a curated pool of vetted hostesses in Delhi NCR, perfect to hire for any event.",
                     },
                   ].map((item, index) => (
                     <ListItem key={index}>
@@ -573,7 +573,7 @@ const Header = () => {
                   <Box display="flex" alignItems="center" mt={2}>
                     <LocationOnIcon sx={{ mr: 1 }} />
                     <Typography variant="body1">
-                      <strong>Address:</strong> Office Bldg, Office 307 0136, Dubai Investment Park, Dubai
+                      <strong>Address:</strong> Office Bldg, Office 307 0136, Delhi NCR Investment Park, Delhi NCR
                     </Typography>
                   </Box>
                 </Paper>
