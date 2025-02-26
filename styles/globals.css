@@ -1,3 +1,9 @@
 .css-1esgr0x-MuiTimelineItem-root::before {
     display: none !important;
 }
+
+.css-gl723-MuiPaper-root-MuiCard-root {
+    padding: 0px !important;
+    height: 280px !important;
+}
+

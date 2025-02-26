@@ -23,6 +23,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Flip } from "react-awesome-reveal";
 import BusinessIcon from "@mui/icons-material/Business";
 import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import Image from "next/image";
 import GroupIcon from "@mui/icons-material/Group";
 import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -116,15 +117,55 @@ const roadmapData = [
 ];
 
 
+const services = [
+  {
+    title: "Quick response",
+    image: "/images/Quick.jpg",
+    description:
+      "Looking for an urgent hire? We’ve got you! At 24-7, we provide quick turn-around, we can provide you with expert solutions within 24 hours for the initial concentration.",
+  },
+  {
+    title: "Rich-database",
+    image: "/images/Database.png",
+    description:
+      "We have access to number of different recruitment portals, which enables us to provide quality resources in accordance with your specific requirement.",
+  },
+  {
+    title: "Domain Expert",
+    image: "/images/Domain.jpg",
+    description:
+      "At 24-7 we assign industry specific recruiters to help you find the right personnel who can contribute to your business growth.",
+  },
+  {
+    title: "Personalized Services",
+    image: "/images/IMG-20250225-WA0011.jpg",
+    description:
+      "Regardless of the size of your business, we assign you an account manager who will work with you on urgent basis.",
+  },
+  {
+    title: "Targeted Delivery",
+    image: "/images/Target.jpeg",
+    description:
+      "We select top quality resources through careful screening process and deliver talent solutions across industries.",
+  },
+  {
+    title: "Replacement Assurance",
+    image: "/images/Rep.webp",
+    description:
+      "We provide 100% replacement guarantee. If any resource provided by us leaves within 90 days, we replace the resource at no additional cost.",
+  },
+];
+
+
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
 
   const items = [
-    { type: "image", src: "/images/build recruitment business.jpeg" },
     { type: "image", src: "/images/employment-recruitment-business-company-office-260nw-1757603684.webp" },
+    { type: "image", src: "/images/job-candidate-selection-process-260nw-331128260.webp" },
+    { type: "image", src: "/images/build recruitment business.jpeg" },
     { type: "image", src: "/images/how-to-choose-a-recruiting-agency.webp" },
-    { type: "image", src: "/images/job-candidate-selection-process-260nw-331128260.webp" }
   ];
 
   const testimonials = [
@@ -239,9 +280,7 @@ const Header = () => {
   };
 
   const stats = [
-    // { title: "Total Clients", value: 500 },
-    // { title: "Total Employees", value: 5845 },
-    // { title: "Total Projects", value: 45 },
+
     { title: "Years Experience", value: parseValue("20+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/exp.png" },
     { title: "Dedicated Team", value: parseValue("100+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/team.png" },
     { title: "Hired Via Links", value: parseValue("40,000+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/hire.png" },
@@ -268,36 +307,11 @@ const Header = () => {
         >
 
           <Navbar />
-          {/* sx={{ backgroundImage: 'url("/images/r1.jpg")' }} */}
-          {/* <Box className="Head" >
-            
-            <Container maxWidth="md" sx={{ padding: "40px 0" }}>
-              <Typography variant="h3" component="h1" gutterBottom sx={{ fontWeight: 'bold', color: "#ffffff" }}>
-                Enhance Your <span style={{ color: primaryColor }}>Operations</span> with Expert <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled Professionals for BPO & IT Services in Delhi NCR
-              </Typography>
-              <Typography variant="body1" paragraph style={{ color: "#ffffff" }}>
-                Discover how our BPO & IT staffing agency in Noida connects you with top talent, helping you hire skilled professionals for customer support, technical assistance, and IT projects to ensure success in every endeavor.
-              </Typography>
-              <Button
-                variant="outlined"
-                sx={{
-                  mt: 2,
-                  borderColor: primaryColor,
-                  color: primaryColor,
-                  '&:hover': {
-                    backgroundColor: primaryColor,
-                    color: secondaryColor,
-                  }
-                }}
-              >
-                Get Started Today!
-              </Button>
-            </Container>
-          </Box> */}
+
 
           <Box sx={{ position: "relative", width: "100%", height: "100vh", overflow: "hidden" }}>
             {/* Background Video */}
-          
+
 
             {/* Content */}
             <Box
@@ -313,57 +327,62 @@ const Header = () => {
                 // backgroundColor: "rgba(0, 0, 0, 0.5)", // Optional overlay for better readability
               }}
             >
-                <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              onError={(e) => console.error("Video failed to load", e)}
-              style={{
-                position: "absolute",
-                top: "0",
-                left: "0",
-                width: "100%",
-                height: "100%",
-                objectFit: "fill",
-                zIndex: "-1",
-              }}
-            >
-              <source src="/images/Auto_Video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-              <Container maxWidth="md" sx={{ padding: "40px 0" }}>
-                <Typography
-                  variant="h3"
-                  component="h1"
-                  gutterBottom
-                  sx={{ fontWeight: "bold", color: "#000000" }}
-                >
-                  Enhance Your{" "}
-                  <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}
-                  <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled
-                  Professionals for BPO & IT Services in Delhi NCR
-                </Typography>
-                <Typography variant="body1" paragraph sx={{ color: "#000000" }}>
-                  Discover how our BPO & IT staffing agency in Noida connects you with top talent,
-                  helping you hire skilled professionals for customer support, technical assistance,
-                  and IT projects to ensure success in every endeavor.
-                </Typography>
-                <Button
-                  variant="outlined"
-                  sx={{
-                    mt: 2,
-                    borderColor: primaryColor,
-                    color: primaryColor,
-                    "&:hover": {
-                      backgroundColor: primaryColor,
-                      color: secondaryColor,
-                    },
-                  }}
-                >
-                  Get Started Today!
-                </Button>
-              </Container>
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                onError={(e) => console.error("Video failed to load", e)}
+                style={{
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  width: "100%",
+                  height: "100%",
+                  objectFit: "fill",
+                  zIndex: "-1",
+                }}
+              >
+                <source src="/images/Auto_Video.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+              <div className="header_data" style={{ padding: "125px 0", backgroundColor: "rgb(255 255 255 / 50%)", height: "100%", width: "100%" }}>
+                <Container maxWidth="md" sx={{ padding: "40px 0" }}>
+                  <Typography
+                    variant="h3"
+                    component="h1"
+                    gutterBottom
+                    sx={{ fontWeight: "bold", color: "#000000" }}
+                  >
+                    Enhance Your{" "}
+                    <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}
+                    <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled
+                    Professionals for BPO & IT Services in Delhi NCR
+                  </Typography>
+                  <Typography variant="body1" paragraph sx={{ color: "#000000" }}>
+                    {/* Discover how our BPO & IT staffing agency in Noida connects you with top talent,
+                    helping you hire skilled professionals for customer support, technical assistance,
+                    and IT projects to ensure success in every endeavor. */}
+                    Are you looking for your next career move? Browse our latest job openings, submit your resume, and 
+                    let our expert recruiters connect you with the right opportunities. We work closely with job seekers 
+                    to understand their skills, goals, and aspirations, ensuring the perfect job match.
+                  </Typography>
+                  <Button
+                    variant="outlined"
+                    sx={{
+                      mt: 2,
+                      borderColor: primaryColor,
+                      color: primaryColor,
+                      "&:hover": {
+                        backgroundColor: primaryColor,
+                        color: secondaryColor,
+                      },
+                    }}
+                  >
+                    Get Started Today!
+                  </Button>
+                </Container>
+              </div>
             </Box>
           </Box>
 
@@ -374,15 +393,17 @@ const Header = () => {
               Staffing Services in Delhi NCR
             </Typography>
             <Typography variant="body1" sx={{ mt: 2, color: "#ffffff" }}>
-              ✔ Temporary Staffing: Skilled personnel for front and back office operations, sourced through our trusted staffing agency.
+              ✔ Permanent Recruitment: Find top-tier candidates for long-term success.
             </Typography>
             <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ End-to-End Management: From sourcing to execution, our Noida-based agency covers every detail.
+              ✔ Contract Staffing: Flexible staffing solutions to meet your business needs.
             </Typography>
             <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ Freelancer Selection: Access a curated pool of vetted professionals perfect for any requirement.
+              ✔ HR services & Consultation: We offer strategic HR services and career Consultation to help people.
             </Typography>
-
+            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
+              ✔ Industry-Specific Hiring: Customized recruitment solutions for various industries.
+            </Typography>
           </Box>
 
 
@@ -464,40 +485,59 @@ const Header = () => {
           </Box>
 
 
+          <Box sx={{ py: 6, }}>
+            <Container>
+              <Typography variant="h2" sx={{ color: primaryColor }} align="center" gutterBottom>
+                What we do
+              </Typography>
+              <Typography variant="h6" sx={{ fontSize: "bold", color: primaryColor }} align="center" fontWeight="bold">
+                “Great vision without great people is irrelevant”
+              </Typography>
+              <Typography align="center" sx={{ color: "#fff" }} paragraph>
+                {/* We connect game-changing Organizations and Multi-national’s with top talent, specifically focusing on C Level Placement, covering over 60 Industries and helping clients across 23 countries.
+                We support both contract and full-time requirements, covering a broad spectrum of industries like Recruitment for Accounting & Finance, Customer Services, Hospitality, and Transportation, etc.
+                We advocate our client’s vision and environment to a highly selective market of resources. */}
+                Employers
+                Need to hire top talent? Our recruitment experts take the time to understand your company culture,
+                 business needs, and hiring goals to deliver candidates who align perfectly with your organization. 
+                 Partner with us for efficient, high-quality hiring solutions.
+              </Typography>
+              <Grid container spacing={4} mt={3}>
+                {services.map((service, index) => (
+                  <Grid item xs={12} sm={6} md={4} key={index}>
+                    <Box
+                      sx={{
+                        p: 3,
+                        textAlign: "center",
+                        backgroundColor: "white",
+                        borderRadius: "8px",
+                        boxShadow: 3,
+                        height: "250px",
+                        transition: "transform 0.3s ease-in-out",
+                        "&:hover": {
+                          transform: "scale(1.05)", // Zoom in on hover
+                        },
+                      }}
+                    >
+                      <Image src={service.image} alt={service.title} width={80} height={80} />
+                      <Typography variant="h5" color="primary" gutterBottom>
+                        {service.title}
+                      </Typography>
+                      <Typography>{service.description}</Typography>
+                    </Box>
+
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+
           <Box sx={{ margin: "50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
             </Typography>
 
-            {/* <Swiper
-              modules={[Pagination, Autoplay]}
-              slidesPerView={3}
-              spaceBetween={30}
-              autoplay={{ delay: 3000 }}
-              pagination={{ clickable: true }}
-              style={{ padding: "20px", maxWidth: "80%", margin: "auto" }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={index}>
-                  <Card sx={{ backgroundColor: secondaryColor, borderRadius: "10px", height: "500px", boxShadow: 3 }}>
-                    <CardContent>
-                      <Typography variant="h6" fontStyle="italic">
-                        “{testimonial.quote}”
-                      </Typography>
-                      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
-                        <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
-                        <Typography variant="subtitle1" fontWeight="bold">
-                          {testimonial.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {testimonial.role}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </SwiperSlide>
-              ))}
-            </Swiper> */}
+
             <Swiper
               modules={[Pagination, Autoplay]}
               slidesPerView={isMobile ? 1 : isTablet ? 2 : 3}
@@ -563,25 +603,6 @@ const Header = () => {
 
           </Box>
 
-
-          {/* <Box sx={{ margin: "20px 0 50px 0" }}>
-            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
-            </Typography>
-
-            <Grid container spacing={20} justifyContent="center" sx={{ padding: 3 }}>
-              <Grid item>
-                <CounterCard title="Total Clients" target={500} />
-              </Grid>
-              <Grid item>
-                <CounterCard title="Total Employees" target={5845} />
-              </Grid>
-              <Grid item>
-                <CounterCard title="Total Projects" target={45} />
-              </Grid>
-            </Grid>
-          </Box> */}
-
           <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
@@ -600,43 +621,51 @@ const Header = () => {
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
             </Typography>
-            <Box display="flex" justifyContent="space-around" flexWrap="wrap" gap={2}>
+            <Box display="flex" flexWrap="wrap" gap={.5}>
 
               <FlipBox
-                icon={<BusinessIcon fontSize="large" color="primary" />}
+                icon={<img src="/images/contract-to-hire.webp" alt="Permanent Staffing" style={{ width: "40%" }} />}
                 title="Contractual Hiring"
                 description=" IT sector, contractual hiring is crucial for project-based work, software development, cybersecurity, and cloud computing. "
               />
               <FlipBox
-                icon={<CalendarTodayIcon fontSize="large" color="primary" />}
+                icon={<img src="/images/Permanent-Staffing-1.jpg" alt="Permanent Staffing" style={{ width: "63%" }} />}
                 title="Permanent Staffing"
                 description="Fuel Long-Term Success with Handpicked Permanent Talent, we build future-ready teams."
               />
+
               <FlipBox
-                icon={<GroupIcon fontSize="large" color="primary" />}
+                icon={<img src="/images/HROutsourcing.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
                 title="HR Outsourcing"
                 description="Our dynamic HR outsourcing solutions are crafted to simplify workforce management."
               />
-
               <FlipBox
-                icon={<GroupIcon fontSize="large" color="primary" />}
+                icon={<img src="/images/outsourcing-customer-services-in-india.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
                 title="Part Time Outsourcing"
                 description="Part-Time outsourcing has become a game-changer for businesses in both the BPO (Business Process Outsourcing) and IT sectors. "
               />
+              <FlipBox
+                icon={<img src="/images/outsourcing-customer-services-in-india.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
+                title="Our Mission"
+                description="To bridge the gap between right talent and companies that value their skills, expertise, and passion."
+              />
             </Box>
           </Box>
+
+
           <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               <span style={{ color: primaryColor }}>Roadmap</span>
             </Typography>
-            {/* <Timeline sx={{ padding: 3 }}>
+
+            <Timeline sx={{ padding: 3 }}>
               {roadmapData.map((item, index) => (
-                <TimelineItem key={index}>
+                <TimelineItem key={index} sx={{ flexDirection: { xs: "column", md: "row" } }}>
                   {index % 2 === 0 ? (
                     <>
-                      <TimelineContent>
-                        <Box display="inline-block" maxWidth={400}>
-                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1 }}>
+                      <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
+                        <Box display="block" maxWidth="100%" width="100%">
+                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
                             <CardContent>
                               <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
                                 {item.title}
@@ -663,9 +692,9 @@ const Header = () => {
                         <TimelineDot sx={{ backgroundColor: item.color }} />
                         {index !== roadmapData.length - 1 && <TimelineConnector />}
                       </TimelineSeparator>
-                      <TimelineContent>
-                        <Box display="inline-block" maxWidth={400}>
-                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1 }}>
+                      <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
+                        <Box display="block" maxWidth="100%" width="100%">
+                          <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
                             <CardContent>
                               <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
                                 {item.title}
@@ -683,62 +712,7 @@ const Header = () => {
                   )}
                 </TimelineItem>
               ))}
-            </Timeline> */}
-<Timeline sx={{ padding: 3 }}>
-  {roadmapData.map((item, index) => (
-    <TimelineItem key={index} sx={{ flexDirection: { xs: "column", md: "row" } }}>
-      {index % 2 === 0 ? (
-        <>
-          <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-start" } }}>
-            <Box display="block" maxWidth="100%" width="100%">
-              <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
-                <CardContent>
-                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
-                    {item.title}
-                  </Typography>
-                  {item.description.map((desc, i) => (
-                    <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
-                      {desc}
-                    </Typography>
-                  ))}
-                </CardContent>
-              </Card>
-            </Box>
-          </TimelineContent>
-          <TimelineSeparator>
-            <TimelineDot sx={{ backgroundColor: item.color }} />
-            {index !== roadmapData.length - 1 && <TimelineConnector />}
-          </TimelineSeparator>
-          <TimelineContent></TimelineContent>
-        </>
-      ) : (
-        <>
-          <TimelineContent></TimelineContent>
-          <TimelineSeparator>
-            <TimelineDot sx={{ backgroundColor: item.color }} />
-            {index !== roadmapData.length - 1 && <TimelineConnector />}
-          </TimelineSeparator>
-          <TimelineContent sx={{ width: "100%", display: "flex", justifyContent: { xs: "center", md: "flex-end" } }}>
-            <Box display="block" maxWidth="100%" width="100%">
-              <Card sx={{ backgroundColor: item.color, color: "#ffffff", marginTop: 1, width: "100%" }}>
-                <CardContent>
-                  <Typography variant="subtitle1" sx={{ fontWeight: "bold", textAlign: "center" }}>
-                    {item.title}
-                  </Typography>
-                  {item.description.map((desc, i) => (
-                    <Typography key={i} variant="body2" sx={{ marginTop: 1, color: "#ffffff", textAlign: "center" }}>
-                      {desc}
-                    </Typography>
-                  ))}
-                </CardContent>
-              </Card>
-            </Box>
-          </TimelineContent>
-        </>
-      )}
-    </TimelineItem>
-  ))}
-</Timeline>
+            </Timeline>
 
           </Box>
           {/* backgroundImage: 'url("/images/interview.jpg")', */}

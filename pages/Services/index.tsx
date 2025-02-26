@@ -242,10 +242,10 @@ function Index() {
                 { label: "Current Location", name: "currentLocation" },
                 { label: "Preferred Location", name: "preferredLocation" },
                 { label: "Total Experience", name: "totalExperience" },
-                { label: "Expertise", name: "expertise" },
-                { label: "Experience", name: "experience" },
-                { label: "Clients", name: "clients" },
-                { label: "Successful Placements", name: "successfulPlacements" }
+                // { label: "Expertise", name: "expertise" },
+                // { label: "Experience", name: "experience" },
+                // { label: "Clients", name: "clients" },
+                // { label: "Successful Placements", name: "successfulPlacements" }
               ].map(({ label, name, type = "text" }, index) => (
                 <Grid item xs={12} md={6} key={name}>
                   <TextField
