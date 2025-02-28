@@ -361,7 +361,7 @@ const Header = () => {
                     variant="h3"
                     component="h1"
                     gutterBottom
-                    sx={{ fontWeight: "bold", color: "#000000" }}
+                    sx={{ fontWeight: "bold", color: "#000000" , fontSize:"2.5rem" }}
                   >
                     Enhance Your{" "}
                     <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}

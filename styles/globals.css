@@ -27,9 +27,3 @@
         padding: 125px 0;
     }
 }
-
-@media(max-width:899px){
-    .css-1xe98xv-MuiTypography-root{
-        font-size: 2.5rem !important;
-    }
-}
