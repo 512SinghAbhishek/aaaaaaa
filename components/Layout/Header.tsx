@@ -355,7 +355,7 @@ const Header = () => {
                 <source src="/images/Auto_Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="header_data" style={{ padding: "125px 0", backgroundColor: "rgb(255 255 255 / 50%)", height: "100%", width: "100%" }}>
+              <div className="header_data" style={{  backgroundColor: "rgb(255 255 255 / 50%)", height: "100%", width: "100%" }}>
                 <Container maxWidth="md" sx={{ padding: "40px 0" }}>
                   <Typography
                     variant="h3"
