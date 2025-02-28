@@ -13,8 +13,9 @@ import {
     Box,
     Button,
     ListItemIcon,
-    IconButton, Card, CardContent, Avatar, Grid
+    IconButton, Card, CardContent, Avatar, Grid, Popover
 } from "@mui/material";
+import { Business, Group, Work, AccountTree, Insights, BarChart } from "@mui/icons-material";
 import { styled } from "@mui/system";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -28,25 +29,7 @@ const drawerWidth = 240;
 const primaryColor = "#008acb";
 const secondaryColor = "#000000";
 
-const roles = [
-    "Information Technology",
-    "Healthcare",
-    "Hospitality",
-    "Telecommunications",
-    "Real Estate",
-    "Marketing",
-    "Agriculture",
-    "Construction",
-    "Transportation",
-    "Accounting",
-    "Finance",
-    "E commerce",
-    "Manufacturing",
-    "Education",
-    "Media ",
-    "Entertainment"
 
-];
 
 
 const services = [
@@ -88,6 +71,16 @@ const services = [
     },
 ];
 
+
+// const services = [
+//     { title: "HR Services", description: "Trusted HR & Placements services.", position: { top: "5%", left: "50%" }, icon: <Business sx={{ width: 70, height: 70 }} /> },
+//     { title: "Manpower Recruitment", description: "Widespread network for hiring.", position: { top: "25%", right: "10%" }, icon: <Group sx={{ width: 70, height: 70 }} /> },
+//     { title: "Placement Services", description: "Connecting candidates & companies.", position: { top: "55%", right: "5%" }, icon: <Work sx={{ width: 70, height: 70 }} /> },
+//     { title: "Org. Management", description: "Best employee output & efficiency.", position: { bottom: "20%", right: "15%" }, icon: <AccountTree sx={{ width: 70, height: 70 }} /> },
+//     { title: "Customer Insight", description: "Customers at core of our business.", position: { bottom: "5%", left: "10%" }, icon: <Insights sx={{ width: 70, height: 70 }} /> },
+//     { title: "Advanced Analytics", description: "Data-driven business decisions.", position: { top: "25%", left: "5%" }, icon: <BarChart sx={{ width: 70, height: 70 }} /> }
+// ];
+
 const StyledCard = styled(Card)({
     transition: "0.3s",
     "&:hover": {
@@ -123,10 +116,22 @@ const features = [
 ];
 
 const index = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [selectedService, setSelectedService] = useState(null);
+
+    const handleClick = (event, service) => {
+        setAnchorEl(event.currentTarget);
+        setSelectedService(service);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+        setSelectedService(null);
+    };
 
     return (
         <>
-           
+
             <Navbar />
             <Box
                 component="main"
@@ -154,7 +159,7 @@ const index = () => {
                         }}
                     >
                         About <span style={{ color: "#008acb" }}>Career Cruise Consulting.</span> - The
-                        Staffing Agency in Delhi NCR
+                        Staffing Agency across India
                     </Typography>
                     <Typography
                         variant="body1"
@@ -169,26 +174,13 @@ const index = () => {
                         an employer seeking skilled professionals or a job seeker looking for your next opportunity, we
                         are here to help.<br />
                         Career Cruise Consulting where talent meets opportunity! We are a dynamic recruitment agency dedicated
-                        to connecting top-tier professionals with industry-leading organizations. Our mission is simple: to
-                        bridge the gap between exceptional talent and companies that value their skills, expertise, and passion.
+                        to connecting top-tier professionals with industry-leading organizations.
+                        {/* <br />
+                        Our mission is simple to
+                        bridge the gap between exceptional talent and companies that value their skills, expertise, and passion. */}
 
                     </Typography>
-                    <Button
-                        variant="outlined"
-                        href="/Services"
-                        sx={{
-                            marginTop: 3,
-                            borderColor: "#18A0C3",
-                            color: "#18A0C3",
-                            animation: "fadeInUp 1s",
-                            ":hover": {
-                                backgroundColor: "#18A0C3",
-                                color: "#FFFFFF",
-                            },
-                        }}
-                    >
-                        Start Hiring
-                    </Button>
+
                 </Box>
 
 
@@ -243,47 +235,8 @@ const index = () => {
 
                 </Box>
 
-                <Typography variant="h4" component="h2" sx={{ textAlign: "center", color: "#ffffff" }} gutterBottom>
-                    We got you <strong style={{ color: primaryColor }}>covered.</strong>
-                </Typography>
-
-                <Grid item xs={12} container spacing={2}>
-                    <Grid item xs={12} md={9} sx={{ paddingRight: "20px" }}>
-                        <Typography variant="body1" paragraph style={{ color: "#ffffff" }}>
-                            Freelancers of the highest caliber to support various roles for your event
-                            through our Hiring agency in Delhi NCR. Whether you need <strong style={{ color: primaryColor }}>pre-event
-                                support, hostesses in Delhi NCR, or on-site personnel during the live phase</strong>,
-                            we ensure a flawless experience from beginning to end.
-                        </Typography>
-
-                        <Grid container spacing={2}>
-                            <Grid item xs={12} md={12}>
-                                <List>
-                                    <Grid container spacing={2}>
-                                        {roles.map((role, index) => (
-                                            <Grid item xs={12} sm={6} md={4} key={index}> {/* 3 per row on md+ screens */}
-                                                <ListItem style={{ border: "solid 1px", marginRight: "5px" }}>
-                                                    <ListItemIcon style={{ minWidth: "29px" }}>
-                                                        <CheckCircleIcon style={{ maxWidth: "42px" }} color="primary" />
-                                                    </ListItemIcon>
-                                                    <ListItemText style={{ color: "#ffffff" }} primary={role} />
-                                                </ListItem>
-                                            </Grid>
-                                        ))}
-                                    </Grid>
-                                </List>
-                            </Grid>
-                        </Grid>
-
-
-                    </Grid>
-                    <Grid item xs={12} sx={{ backgroundImage: 'url("/images/UK-Recruitment-Agencies.jpg")' }} md={3}>
-
-                    </Grid>
-                </Grid>
-
                 <Container sx={{ padding: "70px 0px 70px 0", textAlign: "center" }}>
-                    <Typography variant="h4" sx={{ color: "#fff" , marginBottom:"50px"}} align="center" gutterBottom>
+                    <Typography variant="h4" sx={{ color: "#fff", marginBottom: "50px" }} align="center" gutterBottom>
                         OUR <strong style={{ color: primaryColor }}>SERVICES</strong>
                     </Typography>
                     <Grid container spacing={3}>
@@ -305,8 +258,169 @@ const index = () => {
                             </Grid>
                         ))}
                     </Grid>
+
+                    {/* <Box
+                        sx={{
+                            position: "relative",
+                            width: "100%",
+                            height: "900px",
+                            backgroundImage: "url(/images/cinar.jpg)",
+                            backgroundSize: "cover",
+                            backgroundPosition: "center",
+                            margin: "auto",
+                        }}
+                    >
+                        {services.map((service, index) => (
+                            <Box
+                                key={index}
+                                sx={{
+                                    position: "absolute",
+                                    cursor: "pointer",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    background: "rgba(255,255,255,0.8)",
+                                    padding: "4px 8px",
+                                    borderRadius: "4px",
+                                    ...service.position,
+                                }}
+                                onClick={(event) => handleClick(event, service)}
+                            >
+                                {service.icon}
+                                <Typography sx={{ fontWeight: "bold", marginLeft: "8px" }}>{service.title}</Typography>
+                            </Box>
+                        ))}
+
+                        <Popover
+                            open={Boolean(anchorEl)}
+                            anchorEl={anchorEl}
+                            onClose={handleClose}
+                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
+                            transformOrigin={{ vertical: "top", horizontal: "center" }}
+                        >
+                            <Box sx={{ padding: "10px", maxWidth: "200px" }}>
+                                <Typography variant="h6" fontSize={14} fontWeight="bold">
+                                    {selectedService?.title}
+                                </Typography>
+                                <Typography variant="body2" fontSize={12}>
+                                    {selectedService?.description}
+                                </Typography>
+                            </Box>
+                        </Popover>
+                    </Box> */}
+
                 </Container>
 
+                <Box sx={{ padding: "0px 0px 70px 0", textAlign: "center" }}>
+                    <Typography
+                        variant="h4"
+                        component="h2"
+                        sx={{
+                            fontWeight: "bold",
+                            color: "#ffffff",
+                            animation: "fadeInUp 1s",
+                            marginTop: "60px",
+                            textAlign: "center"
+                        }}
+                    >
+                        Our <span style={{ color: "#008acb" }}> Mission</span>
+                    </Typography>
+                    <Typography
+                        variant="body1"
+                        sx={{
+                            marginTop: 2,
+                            color: "#ffffff",
+                            animation: "fadeIn 1s",
+                            padding: "7px 0px 70px 0",
+                        }}
+                    >
+
+                        Our mission is simple to
+                        bridge the gap between exceptional talent and companies that value their skills, expertise, and passion.
+
+                    </Typography>
+
+                    <div className="mission_img">
+                        <img src="/images/mission1.jpg" alt="" style={{ width: "100%", height: "500px" , borderRadius:"20px" }} />
+
+                    </div>
+
+                </Box>
+
+
+
+                <Box sx={{ padding: "0px 0px 70px 0" }}>
+                    <Grid container spacing={2}>
+
+                        <Grid item xs={12} sm={6}>
+                            <Typography
+                                variant="h4"
+                                component="h2"
+                                sx={{
+                                    fontWeight: "bold",
+                                    color: "#ffffff",
+                                    animation: "fadeInUp 1s",
+                                    marginTop: "60px",
+                                    textAlign: "start"
+                                }}
+                            >
+                                For <span style={{ color: "#008acb" }}> Job Seekers</span>
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    marginTop: 2,
+                                    color: "#ffffff",
+                                    animation: "fadeIn 1s",
+                                }}
+                            >
+
+                                Are you looking for your next career move? Browse our latest job openings, submit your resume, and
+                                let our expert recruiters connect you with the right opportunities. We work closely with job seekers
+                                to understand their skills, goals, and aspirations, ensuring the perfect job match
+                            </Typography>
+                        </Grid>
+                        <Grid item xs={12} sm={6}>
+                            <img src="/images/Sikker.png" alt="" style={{ width: "96%", height: "400px", borderRadius: "10px" }} />
+                        </Grid>
+                    </Grid>
+
+                </Box>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                        <img src="/images/Clint.jpg" alt="" style={{ width: "96%", height: "400px", borderRadius: "10px" }} />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+
+                        <Box sx={{ padding: "0px 0px 70px 0" }}>
+                            <Typography
+                                variant="h4"
+                                component="h2"
+                                sx={{
+                                    fontWeight: "bold",
+                                    color: "#ffffff",
+                                    animation: "fadeInUp 1s",
+                                    marginTop: "60px",
+                                    textAlign: "start"
+                                }}
+                            >
+                                For <span style={{ color: "#008acb" }}> Cients Tieup</span>
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                sx={{
+                                    marginTop: 2,
+                                    color: "#ffffff",
+                                    animation: "fadeIn 1s",
+                                }}
+                            >
+                                Need to hire top talent? Our recruitment experts take the time to understand your company culture,
+                                business needs, and hiring goals to deliver candidates who align perfectly with your organization.
+                                Partner with us for efficient, high-quality hiring solutions.
+                            </Typography>
+
+                        </Box>
+                    </Grid>
+                </Grid>
             </Box>
         </>
     );

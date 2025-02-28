@@ -10,3 +10,17 @@
 .css-yig0sb::before{
     display: none !important; 
 }
+
+.css-w0m5bq{
+    object-fit: fill !important;
+}
+.css-1wtp6o0-MuiSvgIcon-root{
+    font-size: 2.5rem !important;
+}
+
+@media(min-width:900px){
+    .Footer_sec{
+        display :flex;
+       justify-content: space-between;
+    }
+}

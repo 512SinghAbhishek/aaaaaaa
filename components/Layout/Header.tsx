@@ -13,7 +13,7 @@ import {
   Button,
   ListItemIcon,
   IconButton, Card, CardContent, Avatar, Grid,
-  useMediaQuery
+  useMediaQuery, ListItemAvatar
 } from "@mui/material";
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@mui/lab";
 import EmailIcon from "@mui/icons-material/Email";
@@ -29,6 +29,22 @@ import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import axios from "axios";
+import ComputerIcon from "@mui/icons-material/Computer";
+import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import HotelIcon from "@mui/icons-material/Hotel";
+import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import CampaignIcon from "@mui/icons-material/Campaign";
+import AgricultureIcon from "@mui/icons-material/Agriculture";
+import ConstructionIcon from "@mui/icons-material/Construction";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import FactoryIcon from "@mui/icons-material/Factory";
+import SchoolIcon from "@mui/icons-material/School";
+import MovieIcon from "@mui/icons-material/Movie";
+import TheatersIcon from "@mui/icons-material/Theaters";
 
 import Navbar from "./Navbar";
 
@@ -106,7 +122,7 @@ const roadmapData = [
   {
     year: "Step 7",
     title: "Selection & Company Onboarding",
-    color: "#D32F2F",
+    color: "#009595",
     image: "onboarding.png",
     description: [
       "Accept the job offer and sign the contract.",
@@ -116,6 +132,25 @@ const roadmapData = [
   }
 ];
 
+
+const roles = [
+  { name: "Information Technology", icon: <ComputerIcon color="primary" /> },
+  { name: "Healthcare", icon: <LocalHospitalIcon color="primary" /> },
+  { name: "Hospitality", icon: <HotelIcon color="primary" /> },
+  { name: "Telecommunications", icon: <PhoneAndroidIcon color="primary" /> },
+  { name: "Real Estate", icon: <HomeWorkIcon color="primary" /> },
+  { name: "Marketing", icon: <CampaignIcon color="primary" /> },
+  { name: "Agriculture", icon: <AgricultureIcon color="primary" /> },
+  { name: "Construction", icon: <ConstructionIcon color="primary" /> },
+  { name: "Transportation", icon: <DirectionsCarIcon color="primary" /> },
+  { name: "Accounting", icon: <AccountBalanceIcon color="primary" /> },
+  { name: "Finance", icon: <AttachMoneyIcon color="primary" /> },
+  { name: "E commerce", icon: <ShoppingCartIcon color="primary" /> },
+  { name: "Manufacturing", icon: <FactoryIcon color="primary" /> },
+  { name: "Education", icon: <SchoolIcon color="primary" /> },
+  { name: "Media", icon: <MovieIcon color="primary" /> },
+  { name: "Entertainment", icon: <TheatersIcon color="primary" /> }
+];
 
 const services = [
   {
@@ -156,14 +191,23 @@ const services = [
   },
 ];
 
+const clients = [
+  "/images/igtsolutions_logo.jpeg",
+  "/images/lovelocalindia_logo.jpeg",
+  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/sskothari.png",
+  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/new_o3.png",
+  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/virtualteam.png",
+  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/swissmilitary.png",
+];
+
 
 const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
 
   const items = [
-    { type: "image", src: "/images/employment-recruitment-business-company-office-260nw-1757603684.webp" },
-    { type: "image", src: "/images/job-candidate-selection-process-260nw-331128260.webp" },
+    { type: "image", src: "/images/employment-recruitment-business-company-office-260nw-1757603684.jpg" },
+    { type: "image", src: "/images/job-candidate-selection-process-260nw-331128260.jpg" },
     { type: "image", src: "/images/build recruitment business.jpeg" },
     { type: "image", src: "/images/how-to-choose-a-recruiting-agency.webp" },
   ];
@@ -229,7 +273,8 @@ const Header = () => {
   };
 
   const [formData, setFormData] = useState({
-    fullName: "",
+    firstName: "",
+    lastName: "",
     email: "",
     phone: "",
     organizationName: "",
@@ -247,7 +292,7 @@ const Header = () => {
       const response = await axios.post("xyz/contact", formData);
 
       alert(response.data.message);
-      setFormData({ fullName: "", email: "", phone: "", organizationName: "", message: "" });
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", organizationName: "", message: "" });
     } catch (error) {
       alert("Error: " + error.response?.data?.error || "Something went wrong");
     }
@@ -281,11 +326,11 @@ const Header = () => {
 
   const stats = [
 
-    { title: "Years Experience", value: parseValue("20+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/exp.png" },
+    { title: "Years Of Experience", value: parseValue("20+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/exp.png" },
     { title: "Dedicated Team", value: parseValue("100+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/team.png" },
-    { title: "Hired Via Links", value: parseValue("40,000+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/hire.png" },
-    { title: "DataBase", value: parseValue("1M+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/data.png" },
-    { title: "Compliance", value: parseValue("100%"), image: "https://linksuae.ae/wp-content/uploads/2025/01/comp.png" }
+    { title: "Successful Placements", value: parseValue("40,000+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/hire.png" },
+    { title: "Strong Clientele", value: parseValue("1M+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/data.png" },
+    // { title: "Compliance", value: parseValue("100%"), image: "https://linksuae.ae/wp-content/uploads/2025/01/comp.png" }
   ];
 
   return (
@@ -356,19 +401,19 @@ const Header = () => {
                   >
                     Enhance Your{" "}
                     <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}
-                    <span style={{ color: primaryColor }}>Staffing Solutions</span>: Hire Skilled
-                    Professionals for BPO & IT Services in Delhi NCR
+                    <span style={{ color: primaryColor }}>Staffing Solutions</span>: Get hired as a skilled professional across India
                   </Typography>
                   <Typography variant="body1" paragraph sx={{ color: "#000000" }}>
                     {/* Discover how our BPO & IT staffing agency in Noida connects you with top talent,
                     helping you hire skilled professionals for customer support, technical assistance,
                     and IT projects to ensure success in every endeavor. */}
-                    Are you looking for your next career move? Browse our latest job openings, submit your resume, and 
-                    let our expert recruiters connect you with the right opportunities. We work closely with job seekers 
+                    Are you looking for your next career move? Browse our latest job openings, submit your resume, and
+                    let our expert recruiters connect you with the right opportunities. We work closely with job seekers
                     to understand their skills, goals, and aspirations, ensuring the perfect job match.
                   </Typography>
                   <Button
                     variant="outlined"
+                    href="/Services"
                     sx={{
                       mt: 2,
                       borderColor: primaryColor,
@@ -378,6 +423,7 @@ const Header = () => {
                         color: secondaryColor,
                       },
                     }}
+
                   >
                     Get Started Today!
                   </Button>
@@ -387,7 +433,7 @@ const Header = () => {
           </Box>
 
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
               Staffing Services in Delhi NCR
@@ -404,7 +450,7 @@ const Header = () => {
             <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
               ✔ Industry-Specific Hiring: Customized recruitment solutions for various industries.
             </Typography>
-          </Box>
+          </Box> */}
 
 
 
@@ -415,20 +461,21 @@ const Header = () => {
               {/* Text Section */}
               <Grid item xs={12} md={6}>
                 <Typography variant="h4" sx={{ fontWeight: "bold", color: primaryColor }}>
-                  Comprehensive <span style={{ fontWeight: "bold" }}>BPO and IT Staffing Services</span> in Delhi NCR
+                  Find the right job to grow your career
+                  {/* <span style={{ fontWeight: "bold" }}>BPO and IT Staffing Services</span> in Delhi NCR */}
                 </Typography>
 
                 <List>
                   {[
                     {
-                      text: "Skilled professionals for front-office and back-office operations, sourced through our trusted staffing agency.",
+                      text: "We are hiring for blue collar and white collar positions.",
                     },
                     {
-                      text: "From talent acquisition to seamless execution, our Noida-based staffing agency handles every detail.",
+                      text: "Helping Hands All Over India.",
                     },
-                    {
-                      text: "Access a curated pool of vetted professionals in Noida, ideal for customer support, IT services, and business operations.",
-                    },
+                    // {
+                    //   text: "Access a curated pool of vetted professionals in Noida, ideal for customer support, IT services, and business operations.",
+                    // },
                   ].map((item, index) => (
                     <ListItem key={index}>
                       <ListItemIcon>
@@ -485,7 +532,7 @@ const Header = () => {
           </Box>
 
 
-          <Box sx={{ py: 6, }}>
+          <Box sx={{ py: 6, padding:"0 0 50px 0" }}>
             <Container>
               <Typography variant="h2" sx={{ color: primaryColor }} align="center" gutterBottom>
                 What we do
@@ -499,8 +546,8 @@ const Header = () => {
                 We advocate our client’s vision and environment to a highly selective market of resources. */}
                 Employers
                 Need to hire top talent? Our recruitment experts take the time to understand your company culture,
-                 business needs, and hiring goals to deliver candidates who align perfectly with your organization. 
-                 Partner with us for efficient, high-quality hiring solutions.
+                business needs, and hiring goals to deliver candidates who align perfectly with your organization.
+                Partner with us for efficient, high-quality hiring solutions.
               </Typography>
               <Grid container spacing={4} mt={3}>
                 {services.map((service, index) => (
@@ -532,7 +579,7 @@ const Header = () => {
             </Container>
           </Box>
 
-          <Box sx={{ margin: "50px 0" }}>
+          {/* <Box sx={{ margin: "50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
             </Typography>
@@ -575,11 +622,11 @@ const Header = () => {
                 </SwiperSlide>
               ))}
             </Swiper>
-          </Box>
+          </Box> */}
 
 
 
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
             <Toolbar />
             <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold", textAlign: "center" }}>
               Who We Are ?
@@ -601,11 +648,72 @@ const Header = () => {
               ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>Customer-Centric Approach – </span>Our focus is on delivering exceptional customer experiences through AI-powered chat support, multilingual call centers, and personalized service models.
             </Typography>
 
-          </Box>
+          </Box> */}
 
-          <Box sx={{ margin: "20px 0 50px 0" }}>
-            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
+          <Typography variant="h4" component="h2" sx={{ textAlign: "center", color: "#ffffff" }} gutterBottom>
+            Our Area Of <strong style={{ color: primaryColor }}> Expertise.</strong>
+          </Typography>
+
+          <Grid item xs={12} container spacing={2}>
+            <Grid item xs={12} md={12} sx={{ paddingRight: "20px" }}>
+              {/* <Typography variant="body1" paragraph style={{ color: "#ffffff" }}>
+                Freelancers of the highest caliber to support various roles for your event
+                through our Hiring agency in Delhi NCR. Whether you need <strong style={{ color: primaryColor }}>pre-event
+                  support, hostesses in Delhi NCR, or on-site personnel during the live phase</strong>,
+                we ensure a flawless experience from beginning to end.
+              </Typography> */}
+
+              <Grid container spacing={2}>
+                <Grid item xs={12} md={12}>
+                  <List>
+                    {/* <Grid container spacing={2}>
+                      {roles.map((role, index) => (
+                        <Grid item xs={12} sm={6} md={3} key={index}> 
+                          <ListItem style={{ border: "solid 1px", marginRight: "5px" }}>
+                            <ListItemIcon style={{ minWidth: "29px" }}>
+                              <CheckCircleIcon style={{ maxWidth: "42px" }} color="primary" />
+                            </ListItemIcon>
+                            <ListItemText style={{ color: "#ffffff" }} primary={role} />
+                          </ListItem>
+                        </Grid>
+                      ))}
+                    </Grid> */}
+
+                    <Grid container spacing={2}>
+                      {roles.map((role, index) => (
+                        <Grid item xs={12} sm={6} md={3} key={index}>
+                          <ListItem style={{ border: "solid 1px", marginRight: "5px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
+                            {/* Avatar Image */}
+                            {/* <ListItemAvatar>
+                              <Avatar src={`/images/${role.name.toLowerCase().replace(/\s+/g, "-")}.png`} alt={role.name} />
+                            </ListItemAvatar> */}
+
+                            {/* Role Icon */}
+                            <ListItemIcon style={{ minWidth: "50px" }}>
+                              {role.icon}
+                            </ListItemIcon>
+
+                            {/* Role Name */}
+                            <ListItemText style={{ color: "#ffffff" }} primary={role.name} />
+                          </ListItem>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </List>
+                </Grid>
+              </Grid>
+
+
+            </Grid>
+            {/* <Grid item xs={12} sx={{ backgroundImage: 'url("/images/UK-Recruitment-Agencies.jpg")' }} md={3}>
+
+            </Grid> */}
+          </Grid>
+
+
+          <Box sx={{ margin: "50px 0 50px 0" }}>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" , color:"#fff" }} >
+            Local <span style={{ color: primaryColor }}>Excellence.</span>
             </Typography>
 
             <Grid container spacing={2} justifyContent="center" sx={{ padding: 3 }}>
@@ -617,7 +725,7 @@ const Header = () => {
             </Grid>
           </Box>
 
-          <Box sx={{ margin: "20px 0 50px 0" }}>
+          {/* <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
               Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
             </Typography>
@@ -650,7 +758,7 @@ const Header = () => {
                 description="To bridge the gap between right talent and companies that value their skills, expertise, and passion."
               />
             </Box>
-          </Box>
+          </Box> */}
 
 
           <Box sx={{ margin: "20px 0 50px 0" }}>
@@ -715,6 +823,25 @@ const Header = () => {
             </Timeline>
 
           </Box>
+          <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" , margin:"40px 0" }} color={primaryColor}>
+              <span style={{ color: primaryColor }}>Our Clients</span>
+            </Typography>
+        
+          <Box sx={{  backgroundColor:"#fff" }}>
+            <Container>
+           
+              <Grid container spacing={2} justifyContent="center">
+                {clients.map((logo, index) => (
+                  <Grid item xs={12} sm={6} md={2} key={index}>
+                    <Box display="flex" justifyContent="center" alignItems="center" p={2}>
+                      <img src={logo} alt="Client Logo" style={{ maxWidth: "70px", height: "70px" }} />
+                    </Box>
+                  </Grid>
+                ))}
+              </Grid>
+            </Container>
+          </Box>
+
           {/* backgroundImage: 'url("/images/interview.jpg")', */}
           <Box sx={{ padding: "50px 10px" }}>
 
@@ -734,7 +861,7 @@ const Header = () => {
                   <Box display="flex" alignItems="center" mt={2}>
                     <LocationOnIcon sx={{ mr: 1 }} />
                     <Typography variant="body1" style={{ color: "#ffffff" }}>
-                      <strong>Address:</strong> Office Bldg, Office 307 0136, Noida Investment Park, Noida
+                      <strong>Address:</strong> Tower B-141, 1st Floor, iThum Tower, Noida , UP 201301
                     </Typography>
                   </Box>
                 </Paper>
@@ -747,7 +874,17 @@ const Header = () => {
                     Get in Touch
                   </Typography>
                   <form onSubmit={handleSubmit}>
-                    <TextField fullWidth label="Full Name" name="fullName" value={formData.fullName} onChange={handleChange} variant="outlined" margin="normal" required />
+                    <Grid container spacing={2}>
+
+                      <Grid item xs={12} sm={6}>
+                        <TextField fullWidth label="First Name" name="firstName" value={formData.firstName} onChange={handleChange} variant="outlined" margin="normal" required />
+
+                      </Grid>
+                      <Grid item xs={12} sm={6}>
+                        <TextField fullWidth label="Last Name" name="lastName" value={formData.lastName} onChange={handleChange} variant="outlined" margin="normal" required />
+
+                      </Grid>
+                    </Grid>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={6}>
                         <TextField fullWidth label="Email" name="email" type="email" value={formData.email} onChange={handleChange} variant="outlined" margin="normal" required />
@@ -756,8 +893,8 @@ const Header = () => {
                         <TextField fullWidth label="Phone" name="phone" type="tel" value={formData.phone} onChange={handleChange} variant="outlined" margin="normal" required />
                       </Grid>
                     </Grid>
-                    <TextField fullWidth label="Organization Name" name="organizationName" value={formData.organizationName} onChange={handleChange} variant="outlined" margin="normal" required />
-                    <TextField fullWidth label="How can we help you?" name="message" value={formData.message} onChange={handleChange} variant="outlined" multiline rows={4} margin="normal" required />
+                    <TextField fullWidth label="Organization Name" name="organizationName" value={formData.organizationName} onChange={handleChange} variant="outlined" margin="normal" />
+                    <TextField fullWidth label="How can we help you?" name="message" value={formData.message} onChange={handleChange} variant="outlined" multiline rows={4} margin="normal" />
                     <Button type="submit" variant="contained" sx={{ mt: 2 }} fullWidth>
                       Send Message
                     </Button>
