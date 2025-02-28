@@ -1,24 +1,11 @@
 import React, { useState } from "react";
 import {
-    AppBar,
-    Toolbar,
     Typography,
-    List,
-    ListItem,
-    ListItemText,
-    TextField,
-    Paper,
     Container,
-    Link,
     Box,
-    Button,
-    ListItemIcon,
-    IconButton, Card, CardContent, Avatar, Grid, Popover
+    Button, Card, CardContent, Grid
 } from "@mui/material";
-import { Business, Group, Work, AccountTree, Insights, BarChart } from "@mui/icons-material";
 import { styled } from "@mui/system";
-import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import MenuIcon from "@mui/icons-material/Menu";
 import "swiper/css";
 import "swiper/css/pagination";
 import { ThumbUp, Chat, SupportAgent, BusinessCenter } from "@mui/icons-material";
@@ -259,54 +246,7 @@ const index = () => {
                         ))}
                     </Grid>
 
-                    {/* <Box
-                        sx={{
-                            position: "relative",
-                            width: "100%",
-                            height: "900px",
-                            backgroundImage: "url(/images/cinar.jpg)",
-                            backgroundSize: "cover",
-                            backgroundPosition: "center",
-                            margin: "auto",
-                        }}
-                    >
-                        {services.map((service, index) => (
-                            <Box
-                                key={index}
-                                sx={{
-                                    position: "absolute",
-                                    cursor: "pointer",
-                                    display: "flex",
-                                    alignItems: "center",
-                                    background: "rgba(255,255,255,0.8)",
-                                    padding: "4px 8px",
-                                    borderRadius: "4px",
-                                    ...service.position,
-                                }}
-                                onClick={(event) => handleClick(event, service)}
-                            >
-                                {service.icon}
-                                <Typography sx={{ fontWeight: "bold", marginLeft: "8px" }}>{service.title}</Typography>
-                            </Box>
-                        ))}
 
-                        <Popover
-                            open={Boolean(anchorEl)}
-                            anchorEl={anchorEl}
-                            onClose={handleClose}
-                            anchorOrigin={{ vertical: "bottom", horizontal: "center" }}
-                            transformOrigin={{ vertical: "top", horizontal: "center" }}
-                        >
-                            <Box sx={{ padding: "10px", maxWidth: "200px" }}>
-                                <Typography variant="h6" fontSize={14} fontWeight="bold">
-                                    {selectedService?.title}
-                                </Typography>
-                                <Typography variant="body2" fontSize={12}>
-                                    {selectedService?.description}
-                                </Typography>
-                            </Box>
-                        </Popover>
-                    </Box> */}
 
                 </Container>
 
@@ -340,7 +280,7 @@ const index = () => {
                     </Typography>
 
                     <div className="mission_img">
-                        <img src="/images/mission1.jpg" alt="" style={{ width: "100%", height: "500px" , borderRadius:"20px" }} />
+                        <img src="/images/mission1.jpg" alt="" style={{ width: "100%", height: "500px", borderRadius: "20px" }} />
 
                     </div>
 

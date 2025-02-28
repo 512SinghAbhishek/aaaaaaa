@@ -19,13 +19,8 @@ import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineC
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { Swiper, SwiperSlide } from "swiper/react";
 import { Flip } from "react-awesome-reveal";
-import BusinessIcon from "@mui/icons-material/Business";
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
 import Image from "next/image";
-import GroupIcon from "@mui/icons-material/Group";
-import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import axios from "axios";
@@ -192,12 +187,8 @@ const services = [
 ];
 
 const clients = [
-  "/images/igtsolutions_logo.jpeg",
-  "/images/lovelocalindia_logo.jpeg",
-  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/sskothari.png",
-  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/new_o3.png",
-  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/virtualteam.png",
-  // "https://www.24-7staff.com/wp-content/themes/twentyfifteen/client-logo/swissmilitary.png",
+  "images/igtsolutions_logo.jpeg",
+  "images/lovelocalindia_logo.jpeg",
 ];
 
 
@@ -212,32 +203,6 @@ const Header = () => {
     { type: "image", src: "/images/how-to-choose-a-recruiting-agency.webp" },
   ];
 
-  const testimonials = [
-    {
-      name: "Ahmed Khalid",
-      role: "CEO of Horizon Technologies",
-      quote:
-        "Partnering with Ahmed Khalid has transformed our customer support operations. Their 24/7 multilingual assistance and AI-driven chatbots have significantly improved response times and customer satisfaction. Their ability to scale with our business needs has been a game-changer",
-    },
-    {
-      name: "Fatima Al Mansoori",
-      role: "Operations Director at Gulf Innovations",
-      quote:
-        "We needed a reliable IT partner to streamline our cloud migration and cybersecurity processes. The expertise and proactive approach of Fatima Al Mansoori have not only enhanced our IT infrastructure but also ensured data security and compliance. Their customized solutions have given us a competitive edge in the market.",
-    },
-    {
-      name: "Sultan Bin Zayed",
-      role: "Founder of Zenith Construction",
-      quote:
-        "Outsourcing our back-office operations to Sultan Bin Zayed has reduced our operational costs by 40% while increasing process accuracy. Their use of RPA (Robotic Process Automation) and AI analytics has optimized our workflow, allowing us to focus on business growth",
-    },
-    {
-      name: "Laila Abbas",
-      role: "Managing Director at Al Noor Enterprises",
-      quote:
-        "From IT helpdesk support to cloud-based solutions,Laila Abbas has been instrumental in ensuring smooth IT operations across our global offices. Their team is highly responsive and committed to delivering innovative solutions that align with our digital strategy",
-    },
-  ];
 
   const CounterCard = ({ title, target }) => {
     const [count, setCount] = useState(0);
@@ -330,7 +295,6 @@ const Header = () => {
     { title: "Dedicated Team", value: parseValue("100+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/team.png" },
     { title: "Successful Placements", value: parseValue("40,000+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/hire.png" },
     { title: "Strong Clientele", value: parseValue("1M+"), image: "https://linksuae.ae/wp-content/uploads/2025/01/data.png" },
-    // { title: "Compliance", value: parseValue("100%"), image: "https://linksuae.ae/wp-content/uploads/2025/01/comp.png" }
   ];
 
   return (
@@ -431,29 +395,6 @@ const Header = () => {
               </div>
             </Box>
           </Box>
-
-
-          {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
-            <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold" }}>
-              Staffing Services in Delhi NCR
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 2, color: "#ffffff" }}>
-              ✔ Permanent Recruitment: Find top-tier candidates for long-term success.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ Contract Staffing: Flexible staffing solutions to meet your business needs.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ HR services & Consultation: We offer strategic HR services and career Consultation to help people.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ Industry-Specific Hiring: Customized recruitment solutions for various industries.
-            </Typography>
-          </Box> */}
-
-
-
 
 
           <Box sx={{ bgcolor: secondaryColor, color: "black", p: 4 }}>
@@ -579,76 +520,6 @@ const Header = () => {
             </Container>
           </Box>
 
-          {/* <Box sx={{ margin: "50px 0" }}>
-            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-              What Our Clients Are <span style={{ color: primaryColor }}>Saying.</span>
-            </Typography>
-
-
-            <Swiper
-              modules={[Pagination, Autoplay]}
-              slidesPerView={isMobile ? 1 : isTablet ? 2 : 3}
-              spaceBetween={isMobile ? 10 : 30}
-              autoplay={{ delay: 3000 }}
-              pagination={{ clickable: true }}
-              style={{ padding: "20px", maxWidth: "90%", margin: "auto" }}
-            >
-              {testimonials.map((testimonial, index) => (
-                <SwiperSlide key={index}>
-                  <Card
-                    sx={{
-                      backgroundColor: secondaryColor,
-                      color: "#ffffff",
-                      borderRadius: "10px",
-                      height: "500px",
-                      boxShadow: 3,
-                    }}
-                  >
-                    <CardContent>
-                      <Typography variant="h6" fontStyle="italic">
-                        “{testimonial.quote}”
-                      </Typography>
-                      <Box sx={{ display: "flex", flexDirection: "column", alignItems: "center", mt: 2 }}>
-                        <Avatar sx={{ bgcolor: primaryColor }}>{testimonial.name.charAt(0)}</Avatar>
-                        <Typography variant="subtitle1" fontWeight="bold">
-                          {testimonial.name}
-                        </Typography>
-                        <Typography variant="body2" color="text.secondary">
-                          {testimonial.role}
-                        </Typography>
-                      </Box>
-                    </CardContent>
-                  </Card>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </Box> */}
-
-
-
-          {/* <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-            <Toolbar />
-            <Typography variant="h4" sx={{ color: primaryColor, fontWeight: "bold", textAlign: "center" }}>
-              Who We Are ?
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 2, color: "#ffffff" }}>
-              At <span style={{ color: primaryColor, fontWeight: "bold" }}>Career Cruise Consulting</span>, we are a leading IT and BPO solutions provider, committed to delivering cutting-edge technology and business process outsourcing services. With a passion for innovation and excellence, we empower businesses worldwide by optimizing operations, enhancing customer experiences, and driving digital transformation.
-            </Typography>
-            <br />
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}> IT Solutions –</span>From software development and cloud computing to cybersecurity and AI-driven solutions, we offer end-to-end IT services that drive growth and efficiency.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>BPO Services – </span> Our business process outsourcing solutions, including customer support, back-office operations, data management, and HR outsourcing, ensure seamless business functions with top-tier quality and efficiency.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>Digital Transformation –</span>We help businesses transition into the digital age with automation, AI, and customized tech solutions that streamline workflows and improve productivity.
-            </Typography>
-            <Typography variant="body1" sx={{ mt: 1, color: "#ffffff" }}>
-              ✔ <span style={{ color: primaryColor, fontWeight: "bold" }}>Customer-Centric Approach – </span>Our focus is on delivering exceptional customer experiences through AI-powered chat support, multilingual call centers, and personalized service models.
-            </Typography>
-
-          </Box> */}
 
           <Typography variant="h4" component="h2" sx={{ textAlign: "center", color: "#ffffff" }} gutterBottom>
             Our Area Of <strong style={{ color: primaryColor }}> Expertise.</strong>
@@ -683,12 +554,7 @@ const Header = () => {
                       {roles.map((role, index) => (
                         <Grid item xs={12} sm={6} md={3} key={index}>
                           <ListItem style={{ border: "solid 1px", marginRight: "5px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
-                            {/* Avatar Image */}
-                            {/* <ListItemAvatar>
-                              <Avatar src={`/images/${role.name.toLowerCase().replace(/\s+/g, "-")}.png`} alt={role.name} />
-                            </ListItemAvatar> */}
-
-                            {/* Role Icon */}
+                            
                             <ListItemIcon style={{ minWidth: "50px" }}>
                               {role.icon}
                             </ListItemIcon>
@@ -705,9 +571,7 @@ const Header = () => {
 
 
             </Grid>
-            {/* <Grid item xs={12} sx={{ backgroundImage: 'url("/images/UK-Recruitment-Agencies.jpg")' }} md={3}>
-
-            </Grid> */}
+          
           </Grid>
 
 
@@ -725,41 +589,7 @@ const Header = () => {
             </Grid>
           </Box>
 
-          {/* <Box sx={{ margin: "20px 0 50px 0" }}>
-            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
-              Links Consultant Outsourcing <span style={{ color: primaryColor }}>Solutions.</span>
-            </Typography>
-            <Box display="flex" flexWrap="wrap" gap={.5}>
-
-              <FlipBox
-                icon={<img src="/images/contract-to-hire.webp" alt="Permanent Staffing" style={{ width: "40%" }} />}
-                title="Contractual Hiring"
-                description=" IT sector, contractual hiring is crucial for project-based work, software development, cybersecurity, and cloud computing. "
-              />
-              <FlipBox
-                icon={<img src="/images/Permanent-Staffing-1.jpg" alt="Permanent Staffing" style={{ width: "63%" }} />}
-                title="Permanent Staffing"
-                description="Fuel Long-Term Success with Handpicked Permanent Talent, we build future-ready teams."
-              />
-
-              <FlipBox
-                icon={<img src="/images/HROutsourcing.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
-                title="HR Outsourcing"
-                description="Our dynamic HR outsourcing solutions are crafted to simplify workforce management."
-              />
-              <FlipBox
-                icon={<img src="/images/outsourcing-customer-services-in-india.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
-                title="Part Time Outsourcing"
-                description="Part-Time outsourcing has become a game-changer for businesses in both the BPO (Business Process Outsourcing) and IT sectors. "
-              />
-              <FlipBox
-                icon={<img src="/images/outsourcing-customer-services-in-india.jpg" alt="Permanent Staffing" style={{ width: "50%" }} />}
-                title="Our Mission"
-                description="To bridge the gap between right talent and companies that value their skills, expertise, and passion."
-              />
-            </Box>
-          </Box> */}
-
+         
 
           <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>

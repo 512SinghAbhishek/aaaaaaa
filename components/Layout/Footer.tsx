@@ -12,11 +12,10 @@ const Footer = () => {
          sx={{
             display: "flex",
             flexDirection: "column",
-            // alignItems: "center",
-            // justifyContent: "center",
+            
             backgroundColor: primaryColor,
             padding: "20px",
-            // textAlign: "center",
+            
          }}
       >
          <div className="Footer_sec" >
