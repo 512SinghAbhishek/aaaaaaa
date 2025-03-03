@@ -24,13 +24,13 @@ const services = [
         title: "HR Services",
         description:
             "We are the most trusted HR & Placements companies in Noida /(Delhi NCR), offering outstanding Services to our esteemed clients.",
-        image: "/images/HR-Services.jpg",
+        image: "/images/1Ser.jpg",
     },
     {
         title: "Manpower Recruitment Services",
         description:
             "We have got a widespread network of clients to whom we render these recruitment services as per their specific industry.",
-        image: "/images/40.jpg",
+        image: "/images/2Ser.jpg",
     },
     {
         title: "Placement Services",
@@ -42,7 +42,7 @@ const services = [
         title: "Organization Management",
         description:
             "Organization management helps to extract the best out of employees so that they accomplish the tasks within the given time frame.",
-        image: "/images/Org.webp",
+        image: "/images/4ser.jpg",
     },
     {
         title: "Customer Insight",
@@ -145,8 +145,7 @@ const index = () => {
                             textAlign: "center"
                         }}
                     >
-                        About <span style={{ color: "#008acb" }}>Career Cruise Consulting.</span> - The
-                        Staffing Agency across India
+                        About <span style={{ color: "#008acb" }}>Career Cruise Consulting.</span>
                     </Typography>
                     <Typography
                         variant="body1"
@@ -280,7 +279,7 @@ const index = () => {
                     </Typography>
 
                     <div className="mission_img">
-                        <img src="/images/mission1.jpg" alt="" style={{ width: "100%", height: "500px", borderRadius: "20px" }} />
+                        <img src="/images/Mission.jpg" alt="" style={{ width: "100%", height: "500px", borderRadius: "20px" }} />
 
                     </div>
 

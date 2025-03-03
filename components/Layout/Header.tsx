@@ -18,6 +18,7 @@ import {
 import { Timeline, TimelineItem, TimelineSeparator, TimelineConnector, TimelineContent, TimelineDot } from "@mui/lab";
 import EmailIcon from "@mui/icons-material/Email";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { Flip } from "react-awesome-reveal";
 import Image from "next/image";
@@ -106,7 +107,7 @@ const roadmapData = [
   {
     year: "Step 6",
     title: "Documentation Process",
-    color: "#388E3C",
+    color: "#bcbc00",
     image: "documentation.png",
     description: [
       "Submit required documents like ID proof, education certificates, and experience letters.",
@@ -162,7 +163,7 @@ const services = [
   },
   {
     title: "Domain Expert",
-    image: "/images/Domain.jpg",
+    image: "/images/Domen.jpg",
     description:
       "At 24-7 we assign industry specific recruiters to help you find the right personnel who can contribute to your business growth.",
   },
@@ -174,13 +175,13 @@ const services = [
   },
   {
     title: "Targeted Delivery",
-    image: "/images/Target.jpeg",
+    image: "/images/Target.png",
     description:
       "We select top quality resources through careful screening process and deliver talent solutions across industries.",
   },
   {
     title: "Replacement Assurance",
-    image: "/images/Rep.webp",
+    image: "/images/Replace.jpg",
     description:
       "We provide 100% replacement guarantee. If any resource provided by us leaves within 90 days, we replace the resource at no additional cost.",
   },
@@ -355,13 +356,13 @@ const Header = () => {
                 <source src="/images/Auto_Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
               </video>
-              <div className="header_data" style={{  backgroundColor: "rgb(255 255 255 / 50%)", height: "100%", width: "100%" }}>
+              <div className="header_data" style={{ backgroundColor: "rgb(255 255 255 / 50%)", height: "100%", width: "100%" }}>
                 <Container maxWidth="md" sx={{ padding: "40px 0" }}>
                   <Typography
                     variant="h3"
                     component="h1"
                     gutterBottom
-                    sx={{ fontWeight: "bold", color: "#000000" , fontSize:"2.5rem" }}
+                    sx={{ fontWeight: "bold", color: "#000000", fontSize: "2.5rem" }}
                   >
                     Enhance Your{" "}
                     <span style={{ color: primaryColor }}>Operations</span> with Expert{" "}
@@ -414,9 +415,9 @@ const Header = () => {
                     {
                       text: "Helping Hands All Over India.",
                     },
-                    // {
-                    //   text: "Access a curated pool of vetted professionals in Noida, ideal for customer support, IT services, and business operations.",
-                    // },
+                    {
+                      text: "We are providing recruitment services in Pan India location. ",
+                    },
                   ].map((item, index) => (
                     <ListItem key={index}>
                       <ListItemIcon>
@@ -473,7 +474,7 @@ const Header = () => {
           </Box>
 
 
-          <Box sx={{ py: 6, padding:"0 0 50px 0" }}>
+          <Box sx={{ py: 6, padding: "0 0 50px 0" }}>
             <Container>
               <Typography variant="h2" sx={{ color: primaryColor }} align="center" gutterBottom>
                 What we do
@@ -553,11 +554,21 @@ const Header = () => {
                     <Grid container spacing={2}>
                       {roles.map((role, index) => (
                         <Grid item xs={12} sm={6} md={3} key={index}>
-                          <ListItem style={{ border: "solid 1px", marginRight: "5px", backgroundColor: "#1a1a1a", borderRadius: "8px" }}>
-                            
-                            <ListItemIcon style={{ minWidth: "50px" }}>
-                              {role.icon}
-                            </ListItemIcon>
+                          <ListItem
+                            style={{
+                              border: "solid 1px",
+                              marginRight: "5px",
+                              backgroundColor: "#1a1a1a",
+                              borderRadius: "8px",
+                              transition: "transform 0.3s ease-in-out", // Smooth transition
+                            }}
+                            sx={{
+                              "&:hover": {
+                                transform: "scale(1.1)", // Zoom-in effect
+                              },
+                            }}
+                          >
+                            <ListItemIcon style={{ minWidth: "50px" }}>{role.icon}</ListItemIcon>
 
                             {/* Role Name */}
                             <ListItemText style={{ color: "#ffffff" }} primary={role.name} />
@@ -565,19 +576,20 @@ const Header = () => {
                         </Grid>
                       ))}
                     </Grid>
+
                   </List>
                 </Grid>
               </Grid>
 
 
             </Grid>
-          
+
           </Grid>
 
 
           <Box sx={{ margin: "50px 0 50px 0" }}>
-            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" , color:"#fff" }} >
-            Local <span style={{ color: primaryColor }}>Excellence.</span>
+            <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center", color: "#fff" }} >
+              Local <span style={{ color: primaryColor }}>Excellence.</span>
             </Typography>
 
             <Grid container spacing={2} justifyContent="center" sx={{ padding: 3 }}>
@@ -589,7 +601,7 @@ const Header = () => {
             </Grid>
           </Box>
 
-         
+
 
           <Box sx={{ margin: "20px 0 50px 0" }}>
             <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" }} color={primaryColor}>
@@ -653,13 +665,13 @@ const Header = () => {
             </Timeline>
 
           </Box>
-          <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center" , margin:"40px 0" }} color={primaryColor}>
-              <span style={{ color: primaryColor }}>Our Clients</span>
-            </Typography>
-        
-          <Box sx={{  backgroundColor:"#fff" }}>
+          <Typography variant="h4" fontWeight="bold" sx={{ textAlign: "center", margin: "40px 0" }} color={primaryColor}>
+            <span style={{ color: primaryColor }}>Our Clients</span>
+          </Typography>
+
+          <Box sx={{ backgroundColor: "#fff" }}>
             <Container>
-           
+
               <Grid container spacing={2} justifyContent="center">
                 {clients.map((logo, index) => (
                   <Grid item xs={12} sm={6} md={2} key={index}>
@@ -678,20 +690,26 @@ const Header = () => {
             <Grid container spacing={4} alignItems="center">
               {/* Left Section - Contact Info */}
               <Grid item xs={12} md={6}>
-                <Paper elevation={3} sx={{ p: 3, backgroundColor: primaryColor, color: secondaryColor }}>
+                <Paper elevation={3} sx={{ p: 3, backgroundColor: "#0a5578", color: secondaryColor }}>
                   <Typography variant="h4" fontWeight="bold" style={{ color: "#ffffff" }}>
                     Contact <span style={{ fontWeight: "lighter" }}>Information</span>
                   </Typography>
                   <Box display="flex" alignItems="center" mt={2}>
                     <EmailIcon sx={{ mr: 1 }} />
                     <Typography variant="body1" style={{ color: "#ffffff" }}>
-                      <strong>Email:</strong> <a href="mailto:humans@Career Cruise Consulting-me.com" style={{ color: "#ffffff" }}>humans@Career Cruise Consulting-me.com</a>
+                      <strong>Email:</strong> <a href="Info@careercruiseconsulting.co" style={{ color: "#ffffff" }}>Info@careercruiseconsulting.co</a>
                     </Typography>
                   </Box>
                   <Box display="flex" alignItems="center" mt={2}>
                     <LocationOnIcon sx={{ mr: 1 }} />
                     <Typography variant="body1" style={{ color: "#ffffff" }}>
                       <strong>Address:</strong> Tower B-141, 1st Floor, iThum Tower, Noida , UP 201301
+                    </Typography>
+                  </Box>
+                  <Box display="flex" alignItems="center" mt={2}>
+                    <PhoneIphoneIcon  sx={{ mr: 1 }} />
+                    <Typography variant="body1" style={{ color: "#ffffff" }}>
+                      <strong>Mob. No.:</strong> 85951 55608
                     </Typography>
                   </Box>
                 </Paper>

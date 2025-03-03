@@ -5,9 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import LayersIcon from "@mui/icons-material/Layers";
-import EventIcon from "@mui/icons-material/Event";
-import InsertChartIcon from "@mui/icons-material/InsertChart";
-import DescriptionIcon from "@mui/icons-material/Description";
+import ArticleIcon from '@mui/icons-material/Article';
 import Link from "next/link";
 
 const primaryColor = "#0a5578";
@@ -17,7 +15,8 @@ const menuItems = [
   { text: "Home", href: "/", icon: <DashboardIcon /> },
   { text: "About", href: "/About", icon: <ContactsIcon /> },
   { text: "Apply", href: "/Services", icon: <LayersIcon /> },
-  // { text: "Calendar", href: "/", icon: <EventIcon /> },
+  { text: "Blogs", href: "/", icon: <ArticleIcon /> }
+
   // { text: "Charts", href: "/", icon: <InsertChartIcon /> },
   // { text: "Documents", href: "/", icon: <DescriptionIcon /> },
 ];
@@ -45,11 +44,26 @@ const Navbar = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: primaryColor, boxShadow: "none" }}>
       <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Box>
         <Box
           component="img"
-          src="/images/logo.png"
+          src="/images/01.png"
           alt="Career Cruise Consulting ME logo white"
-          sx={{ width: "80px", height: "auto", marginTop: "10px", borderRadius: "5px" }}
+          sx={{ width: "50px", height: "auto", marginTop: "10px", borderRadius: "5px" }}
+        />
+        <Box
+          component="img"
+          src="/images/02.png"
+          alt="Career Cruise Consulting ME logo white"
+          sx={{ width: "250px", height: "auto", marginTop: "10px",marginLeft:"20px", borderRadius: "5px" }}
+        />
+        </Box>
+        <Box
+          component="img"
+          src="/images/03.png"
+          
+          alt="Career Cruise Consulting ME logo white"
+          sx={{ width: "200px", height: "auto", marginTop: "10px",color:"#fff", borderRadius: "5px" }}
         />
         {isMobile ? (
           <>

@@ -21,10 +21,10 @@ const Footer = () => {
          <div className="Footer_sec" >
             <Typography variant="h6" component="div" sx={{ color: secondaryColor }}>
                <Link
-                  href="mailto:humans@Career Cruise Consulting-me.com"
+                  href="Info@careercruiseconsulting.co"
                   sx={{ color: secondaryColor, textDecoration: "none" }}
                >
-                  humans@Career Cruise Consulting-me.com
+                  Info@careercruiseconsulting.co
                </Link>
             </Typography>
             <Box
