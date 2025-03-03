@@ -53,6 +53,7 @@ const Navbar = () => {
         />
         <Box
           component="img"
+          className="CCS"
           src="/images/02.png"
           alt="Career Cruise Consulting ME logo white"
           sx={{ width: "250px", height: "auto", marginTop: "10px",marginLeft:"20px", borderRadius: "5px" }}
@@ -61,7 +62,8 @@ const Navbar = () => {
         <Box
           component="img"
           src="/images/03.png"
-          
+          className="CCS"
+        
           alt="Career Cruise Consulting ME logo white"
           sx={{ width: "200px", height: "auto", marginTop: "10px",color:"#fff", borderRadius: "5px" }}
         />

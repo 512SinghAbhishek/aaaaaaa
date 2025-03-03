@@ -26,4 +26,11 @@
     .header_data{
         padding: 125px 0;
     }
+
+}
+
+@media(max-width:600px){
+    .CCS{
+        display: none;
+    }
 }
