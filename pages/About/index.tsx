@@ -279,7 +279,7 @@ const index = () => {
                     </Typography>
 
                     <div className="mission_img">
-                        <img src="/images/Mission.jpg" alt="" style={{ width: "100%", height: "500px", borderRadius: "20px" }} />
+                        <img className="Image_height" src="/images/Mission.jpg" alt="" style={{ borderRadius: "20px" }} />
 
                     </div>
 
@@ -319,14 +319,14 @@ const index = () => {
                             </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <img src="/images/Sikker.png" alt="" style={{ width: "96%", height: "400px", borderRadius: "10px" }} />
+                            <img className="Image_height_1" src="/images/Sikker.png" alt="" style={{  borderRadius: "10px" }} />
                         </Grid>
                     </Grid>
 
                 </Box>
                 <Grid container spacing={2}>
                     <Grid item xs={12} sm={6}>
-                        <img src="/images/Clint.jpg" alt="" style={{ width: "96%", height: "400px", borderRadius: "10px" }} />
+                        <img className="Image_height_1" src="/images/Clint.jpg" alt="" style={{  borderRadius: "10px" }} />
                     </Grid>
                     <Grid item xs={12} sm={6}>
 

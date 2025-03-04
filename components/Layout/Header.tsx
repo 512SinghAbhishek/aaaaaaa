@@ -183,13 +183,15 @@ const services = [
     title: "Replacement Assurance",
     image: "/images/Replace.jpg",
     description:
-      "We provide 100% replacement guarantee. If any resource provided by us leaves within 90 days, we replace the resource at no additional cost.",
+      "We offer a 100% replacement guarantee! If any resource we provide leaves within the agreed timeline, we’ll replace them at no extra cost.",
   },
 ];
 
 const clients = [
   "images/igtsolutions_logo.jpeg",
   "images/lovelocalindia_logo.jpeg",
+  "images/clt3.jpeg",
+  "images/clt4.jpeg",
 ];
 
 
@@ -501,7 +503,7 @@ const Header = () => {
                         backgroundColor: "white",
                         borderRadius: "8px",
                         boxShadow: 3,
-                        height: "250px",
+                        height: "100%",
                         transition: "transform 0.3s ease-in-out",
                         "&:hover": {
                           transform: "scale(1.05)", // Zoom in on hover
