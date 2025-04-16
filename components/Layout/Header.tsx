@@ -41,6 +41,7 @@ import FactoryIcon from "@mui/icons-material/Factory";
 import SchoolIcon from "@mui/icons-material/School";
 import MovieIcon from "@mui/icons-material/Movie";
 import TheatersIcon from "@mui/icons-material/Theaters";
+import ApartmentIcon from '@mui/icons-material/Apartment';
 
 import Navbar from "./Navbar";
 
@@ -132,7 +133,7 @@ const roadmapData = [
 const roles = [
   { name: "Information Technology", icon: <ComputerIcon color="primary" /> },
   { name: "Healthcare", icon: <LocalHospitalIcon color="primary" /> },
-  { name: "Hospitality", icon: <HotelIcon color="primary" /> },
+  { name: "Hospitality", icon: <ApartmentIcon color="primary" /> },
   { name: "Telecommunications", icon: <PhoneAndroidIcon color="primary" /> },
   { name: "Real Estate", icon: <HomeWorkIcon color="primary" /> },
   { name: "Marketing", icon: <CampaignIcon color="primary" /> },
@@ -190,7 +191,7 @@ const services = [
 const clients = [
   "images/igtsolutions_logo.jpeg",
   "images/lovelocalindia_logo.jpeg",
-  "images/clt3.jpeg",
+  "images/Logo_com.jpg",
   "images/clt4.jpeg",
 ];
 
@@ -678,7 +679,7 @@ const Header = () => {
                 {clients.map((logo, index) => (
                   <Grid item xs={12} sm={6} md={2} key={index}>
                     <Box display="flex" justifyContent="center" alignItems="center" p={2}>
-                      <img src={logo} alt="Client Logo" style={{ maxWidth: "70px", height: "70px" }} />
+                      <img src={logo} alt="Client Logo" style={{ maxWidth: "150px", height: "70px" }} />
                     </Box>
                   </Grid>
                 ))}

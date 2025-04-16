@@ -51,22 +51,22 @@ const Navbar = () => {
           alt="Career Cruise Consulting ME logo white"
           sx={{ width: "50px", height: "auto", marginTop: "10px", borderRadius: "5px" }}
         />
-        <Box
+        {/* <Box
           component="img"
           className="CCS"
           src="/images/02.png"
           alt="Career Cruise Consulting ME logo white"
           sx={{ width: "250px", height: "auto", marginTop: "10px",marginLeft:"20px", borderRadius: "5px" }}
-        />
+        /> */}
         </Box>
-        <Box
+        {/* <Box
           component="img"
-          src="/images/03.png"
+          src="/images/"
           className="CCS"
         
           alt="Career Cruise Consulting ME logo white"
           sx={{ width: "200px", height: "auto", marginTop: "10px",color:"#fff", borderRadius: "5px" }}
-        />
+        /> */}
         {isMobile ? (
           <>
             <IconButton edge="end" color="inherit" onClick={toggleDrawer(true)}>
